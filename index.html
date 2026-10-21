@@ -47,7 +47,7 @@
   button{font-family:inherit;cursor:pointer;border:none;outline:none;background:none;}
   input,select,textarea{font-family:inherit;}
 
-  /* ===== TOPBAR ===== */
+  /* topbar */
   .topbar{
     position:sticky;top:0;z-index:900;
     background:var(--navy);
@@ -83,7 +83,7 @@
   }
   .hamburger:hover{background:rgba(255,255,255,0.18);}
 
-  /* ===== DRAWER ===== */
+  /* Drawer */
   .drawer-overlay{
     position:fixed;inset:0;background:rgba(15,23,42,0.55);
     opacity:0;visibility:hidden;transition:0.3s;z-index:1000;
@@ -119,7 +119,7 @@
   .drawer-links a.current{background:#ECFDF5;color:var(--emerald-dark);}
   .drawer-footer{padding:1rem 1.4rem;border-top:1px solid #E2E8F0;font-size:0.72rem;color:var(--text-muted);}
 
-  /* ===== PAGE VIEWS ===== */
+  /* Page views */
   main{min-height:70vh;width:100%;}
   .page-view{display:none;}
   .page-view.active{display:block;animation:fadeSlide 0.45s ease;}
@@ -138,7 +138,7 @@
   .section-head h2{font-size:clamp(1.5rem,4vw,1.9rem);font-weight:800;color:var(--navy);margin-bottom:0.75rem;line-height:1.3;}
   .section-head p{color:var(--text-muted);font-size:clamp(0.88rem,2vw,0.97rem);}
 
-  /* ===== HERO ===== */
+  /* Hero */
   .hero{
     background:linear-gradient(135deg,var(--navy) 0%,#1E3A5F 60%,#14532D 140%);
     color:#fff;padding:clamp(2.5rem,6vw,4.4rem) 0 clamp(2rem,5vw,3.75rem);position:relative;overflow:hidden;
@@ -195,7 +195,7 @@
   .stars i{margin-right:1px;}
   .tutor-card p{font-size:0.83rem;color:var(--text-muted);}
 
-  /* STATS */
+  /* Stats */
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.8rem;position:relative;z-index:2;}
   .stat-card{
     background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);
@@ -205,7 +205,7 @@
   .stat-card .num{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:800;color:#fff;margin-bottom:0.3rem;}
   .stat-card .lbl{font-size:0.74rem;color:#CBD5E1;font-weight:600;}
 
-  /* ===== CARD GRID GENERIC ===== */
+  /* Card grid generic */
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;}
   .card{
     background:#fff;border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow-sm);
@@ -213,7 +213,7 @@
   }
   .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);border-color:#FCD9A8;}
 
-  /* ABOUT PAGE */
+  /* About page */
   .about-hero{background:var(--navy);color:#fff;padding:clamp(2.2rem,5vw,3rem) 0;text-align:center;}
   .about-hero h2{font-size:clamp(1.5rem,4vw,1.9rem);font-weight:800;margin-bottom:0.6rem;}
   .about-hero p{color:#CBD5E1;max-width:650px;margin:0 auto;font-size:0.9rem;padding:0 1rem;}
@@ -230,7 +230,7 @@
   .philosophy-card h4{font-size:1.02rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;}
   .philosophy-card p{font-size:0.85rem;color:var(--text-muted);}
 
-  /* SUBJECTS */
+  /* SUbjects */
   .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;}
   .subject-card{
     background:#fff;border-radius:var(--radius);padding:1.5rem 1.1rem;text-align:center;
@@ -245,7 +245,7 @@
   .subject-card h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;}
   .subject-card p{font-size:0.78rem;color:var(--text-muted);}
 
-  /* STUDENTS TABLE */
+  /* Current student table */
   .filter-bar{display:flex;justify-content:center;gap:0.6rem;margin-bottom:1.75rem;flex-wrap:wrap;}
   .filter-btn{
     padding:0.55rem 1.2rem;border-radius:30px;font-size:0.78rem;font-weight:700;
@@ -270,7 +270,7 @@
   .pill-active{background:#ECFDF5;color:var(--emerald-dark);border:1px solid #A7F3D0;}
   .pill-graduated{background:#FEF3E2;color:var(--amber);border:1px solid #FCD9A8;}
 
-  /* Mobile card-view for table */
+  /* Mobile view for table */
   .mobile-students-cards{display:none;}
   .student-mcard{
     background:#fff;border-radius:12px;padding:1.1rem;margin-bottom:0.9rem;
@@ -283,7 +283,7 @@
   body.rtl .student-mcard-row .mvalue{text-align:left;}
   .student-mcard-name{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:0.5rem;}
 
-  /* ADMISSIONS */
+  /* Admissions */
   .adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
   .form-card{background:#fff;border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow-md);border-top:4px solid var(--emerald);}
   .form-group{margin-bottom:1.1rem;}
@@ -298,7 +298,7 @@
   .form-group textarea{resize:vertical;min-height:100px;}
   .field-hint{font-size:0.72rem;color:var(--text-muted);margin-top:0.35rem;display:block;}
 
-  /* Radio Group (Tutoring Mode / Grade) */
+  /* Radio Group */
   .radio-group{display:flex;gap:0.7rem;flex-wrap:wrap;}
   .radio-option{
     position:relative;flex:1 1 150px;
@@ -313,7 +313,7 @@
   .radio-option.selected label{border-color:var(--emerald);background:#ECFDF5;color:var(--emerald-dark);}
   .radio-option.selected label i{color:var(--emerald-dark);}
 
-  /* Checkbox Grid (Subjects) */
+  /* Checkbox grid subjects */
   .checkbox-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;}
   .checkbox-option{position:relative;}
   .checkbox-option input{position:absolute;opacity:0;width:100%;height:100%;top:0;left:0;cursor:pointer;margin:0;}
@@ -342,14 +342,14 @@
   .trust-box ul li{font-size:0.85rem;color:#065F46;margin-bottom:0.6rem;display:flex;align-items:flex-start;gap:0.55rem;}
   .trust-box ul li i{margin-top:0.2rem;color:var(--emerald-dark);flex-shrink:0;}
 
-  /* FOOTER */
+  /* FooteR */
   footer{background:var(--navy);color:#94A3B8;padding:2rem 0;text-align:center;font-size:0.8rem;}
   .footer-logo-wrap{display:flex;justify-content:center;margin-bottom:1rem;}
   .footer-logo{height:60px;max-height:70px;width:auto;object-fit:contain;border-radius:8px;background:#fff;padding:3px;}
   footer strong{color:#fff;display:block;margin-bottom:0.3rem;}
   footer p{margin-bottom:0.2rem;}
 
-  /* COOKIE BANNER */
+  /* Cookie banner */
   .cookie-banner{
     position:fixed;bottom:-200px;left:0;right:0;z-index:1500;
     background:var(--navy);color:#fff;padding:1.1rem 1.2rem;
@@ -363,7 +363,7 @@
   .cookie-banner button{background:var(--emerald);color:#fff;padding:0.6rem 1.3rem;border-radius:8px;font-weight:700;font-size:0.8rem;white-space:nowrap;display:flex;align-items:center;gap:0.5rem;}
   .cookie-banner button:hover{background:var(--emerald-dark);}
 
-  /* ================= RESPONSIVE BREAKPOINTS ================= */
+  /* Responsive breakpoints */
 
   @media(max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:2rem;}
@@ -411,10 +411,10 @@
 </head>
 <body>
 
-<!-- ============ TOP BAR ============ -->
+<!-- topbar -->
 <header class="topbar">
   <div class="brand">
-    <!-- LOGO IMAGE: place 1000068889.jpg in the same folder as index.html -->
+    <!-- Logo image place 1000068889.jpg -->
     <img src="1000068889.jpg" alt="Leap & Learn Academy Logo" class="brand-logo" onerror="this.style.display='none'">
     <div class="brand-text">
       <h1 data-en="Leap & Learn Academy" data-ur="لیپ اینڈ لرن اکیڈمی">Leap & Learn Academy</h1>
@@ -427,7 +427,7 @@
   </div>
 </header>
 
-<!-- ============ DRAWER ============ -->
+
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <nav class="drawer" id="drawer">
   <div class="drawer-header">
@@ -446,7 +446,6 @@
 
 <main>
 
-  <!-- ============ HOME PAGE ============ -->
   <section id="home" class="page-view active">
     <div class="hero">
       <div class="container">
@@ -531,7 +530,7 @@
     </div>
   </section>
 
-  <!-- ============ ABOUT PAGE ============ -->
+  <!-- about page -->
   <section id="about" class="page-view">
     <div class="about-hero">
       <div class="container">
@@ -570,7 +569,7 @@
     </div>
   </section>
 
-  <!-- ============ SUBJECTS PAGE ============ -->
+  <!-- subjectspage -->
   <section id="subjects" class="page-view">
     <div class="container section-pad">
       <div class="section-head">
@@ -628,7 +627,7 @@
     </div>
   </section>
 
-  <!-- ============ STUDENTS PAGE ============ -->
+  <!-- Studentspage -->
   <section id="students" class="page-view">
     <div class="container section-pad">
       <div class="section-head">
@@ -643,7 +642,7 @@
         <button class="filter-btn" data-filter="graduated" onclick="filterStudents('graduated',this)"><i class="fa-solid fa-graduation-cap"></i> <span data-en="Graduated" data-ur="فارغ التحصیل">Graduated</span></button>
       </div>
 
-      <!-- Desktop/Tablet Table View -->
+      <!-- Desktop view -->
       <div class="table-wrap">
         <table>
           <thead>
@@ -658,12 +657,12 @@
         </table>
       </div>
 
-      <!-- Mobile Card View -->
+      <!-- Mobile view -->
       <div class="mobile-students-cards" id="studentsCards"></div>
     </div>
   </section>
 
-  <!-- ============ ADMISSIONS PAGE ============ -->
+  <!-- admissions -->
   <section id="admissions" class="page-view">
     <div class="container section-pad">
       <div class="section-head">
@@ -676,25 +675,25 @@
         <div class="form-card">
           <form id="admissionForm">
 
-            <!-- 1. Guardian / Parent Name -->
+            <!-- Guardian name -->
             <div class="form-group">
               <label class="field-label" data-en="Guardian / Parent Name" data-ur="سرپرست / والدین کا نام">Guardian / Parent Name</label>
               <input type="text" id="guardianName" required data-en="e.g. Muhammad Asif" data-ur="مثلاً محمد آصف" placeholder="e.g. Muhammad Asif">
             </div>
 
-            <!-- 2. Student Name -->
+            <!-- Student Name -->
             <div class="form-group">
               <label class="field-label" data-en="Student Name" data-ur="طالب علم کا نام">Student Name</label>
               <input type="text" id="studentName" required data-en="Full name of the student" data-ur="طالب علم کا پورا نام" placeholder="Full name of the student">
             </div>
 
-            <!-- 3. WhatsApp / Contact Number -->
+            <!-- WhatsApp Number -->
             <div class="form-group">
               <label class="field-label" data-en="WhatsApp / Contact Number" data-ur="واٹس ایپ / رابطہ نمبر">WhatsApp / Contact Number</label>
               <input type="tel" id="contactNumber" required data-en="03XXXXXXXXX" data-ur="03XXXXXXXXX" placeholder="03XXXXXXXXX">
             </div>
 
-            <!-- 4. Tutoring Mode Selection -->
+            <!-- Tutoring mode selection -->
             <div class="form-group">
               <label class="field-label" data-en="Tutoring Mode" data-ur="تدریسی طریقہ">Tutoring Mode</label>
               <div class="radio-group" id="tutoringModeGroup">
@@ -709,13 +708,13 @@
               </div>
             </div>
 
-            <!-- 5. Location / Address Details -->
+            <!-- Location details -->
             <div class="form-group">
               <label class="field-label" data-en="Location / Address Details" data-ur="مقام / پتہ کی تفصیلات">Location / Address Details</label>
               <input type="text" id="locationDetails" required data-en="City, Area / Sector" data-ur="شہر، علاقہ / سیکٹر" placeholder="City, Area / Sector">
             </div>
 
-            <!-- 6. Target Grade/Class Selection -->
+            <!-- Grade -->
             <div class="form-group">
               <label class="field-label" data-en="Target Grade / Class" data-ur="مطلوبہ جماعت">Target Grade / Class</label>
               <div class="radio-group" id="gradeGroup">
@@ -730,7 +729,7 @@
               </div>
             </div>
 
-            <!-- 7. Subject Selection (min 3) -->
+            <!-- Subjects -->
             <div class="form-group">
               <label class="field-label" data-en="Subject Selection" data-ur="مضامین کا انتخاب">Subject Selection</label>
               <span class="field-hint" data-en="Please select a minimum of 3 subjects." data-ur="براہ کرم کم از کم 3 مضامین منتخب کریں۔">Please select a minimum of 3 subjects.</span>
@@ -774,7 +773,7 @@
               </div>
             </div>
 
-            <!-- 8. Message / Preferred Timings -->
+            <!-- Message -->
             <div class="form-group">
               <label class="field-label" data-en="Message / Preferred Timings" data-ur="پیغام / پسندیدہ وقت">Message / Preferred Timings</label>
               <textarea id="messageBox" data-en="Write your query or preferred timing..." data-ur="اپنا سوال یا پسندیدہ وقت لکھیں..." placeholder="Write your query or preferred timing..."></textarea>
@@ -787,9 +786,9 @@
         <div>
           <div class="contact-info-card">
             <h3 data-en="Get in Touch" data-ur="رابطہ کریں">Get in Touch</h3>
-            <!-- UPDATE YOUR WHATSAPP NUMBER HERE (display text) -->
+    
             <div class="contact-row"><div class="ic"><i class="fa-solid fa-phone"></i></div> <a href="tel:+923469745468">+92 346 9745468</a></div>
-            <!-- UPDATE YOUR EMAIL HERE (display text) -->
+      
             <div class="contact-row"><div class="ic"><i class="fa-solid fa-envelope"></i></div> <a href="mailto:sa54326577@gmail.com">sa54326577@gmail.com</a></div>
             <div class="contact-row"><div class="ic"><i class="fa-solid fa-location-dot"></i></div> <span data-en="Rawalpindi, Punjab, Pakistan" data-ur="راولپنڈی، پنجاب، پاکستان">Rawalpindi, Punjab, Pakistan</span></div>
           </div>
@@ -812,7 +811,7 @@
 <footer>
   <div class="container">
     <div class="footer-logo-wrap">
-      <!-- LOGO IMAGE (footer) -->
+      <!-- Logo image on footer -->
       <img src="1000068889.jpg" alt="Leap & Learn Academy Logo" class="footer-logo" onerror="this.style.display='none'">
     </div>
     <strong data-en="Leap & Learn Academy (L&L Academy)" data-ur="لیپ اینڈ لرن اکیڈمی (ایل اینڈ ایل اکیڈمی)">Leap & Learn Academy (L&L Academy)</strong>
@@ -820,7 +819,7 @@
   </div>
 </footer>
 
-<!-- ============ COOKIE BANNER ============ -->
+<!-- Cookies -->
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-text">
     <i class="fa-solid fa-cookie-bite"></i>
@@ -830,13 +829,11 @@
 </div>
 
 <script>
-  /* ================= CONFIG ================= */
-  /* UPDATE YOUR WHATSAPP NUMBER HERE - format: countrycode+number, no plus sign, no spaces */
+  /* Config */
   const WHATSAPP_NUMBER = "+923469745468";
-  /* UPDATE YOUR EMAIL HERE */
   const CONTACT_EMAIL = "sa54326577@gmail.com";
 
-  /* ================= NAVIGATION ================= */
+  /* Navigate */
   function navigateTo(pageId){
     document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('active'));
     const target = document.getElementById(pageId);
@@ -848,7 +845,7 @@
     closeDrawer();
   }
 
-  /* ================= DRAWER ================= */
+  /* Drawer */
   function openDrawer(){
     document.getElementById('drawer').classList.add('open');
     document.getElementById('drawerOverlay').classList.add('open');
@@ -860,7 +857,7 @@
     document.body.style.overflow = '';
   }
 
-  /* ================= COOKIES ================= */
+  /* Cookiess */
   function acceptCookies(){
     localStorage.setItem('llacademy_cookies_accepted', 'true');
     document.getElementById('cookieBanner').classList.remove('show');
@@ -871,7 +868,7 @@
     }
   });
 
-  /* ================= LANGUAGE SWITCH ================= */
+  /* Lang switch */
   let currentLang = 'en';
   function toggleLanguage(){
     currentLang = currentLang === 'en' ? 'ur' : 'en';
@@ -897,7 +894,6 @@
     renderStudents(document.querySelector('.filter-btn.active').getAttribute('data-filter'));
   }
 
-  /* ================= RADIO / CHECKBOX VISUAL STATE ================= */
   function setupRadioGroup(groupId){
     const group = document.getElementById(groupId);
     if(!group) return;
@@ -927,7 +923,7 @@
   }
   setupCheckboxGroup();
 
-  /* ================= STUDENTS DATA ================= */
+  /* Students Table */
   const students = [
     {name:"Arman Yasir", grade:"Grade 10", session:"2024–2025", status:"graduated"},
     {name:"Nabeel Ahmed", grade:"Grade 10", session:"2024–2025", status:"graduated"},
@@ -997,7 +993,7 @@
     renderStudents(filter);
   }
 
-  /* ================= ADMISSION FORM -> WHATSAPP ================= */
+  /* Admission form */
   document.getElementById('admissionForm').addEventListener('submit', function(e){
     e.preventDefault();
     const lang = document.documentElement.getAttribute('lang') || 'en';
@@ -1039,11 +1035,9 @@ Subjects Selected: ${selectedSubjects.join(', ')}
 Message: ${message || '-'}`;
 
     const encoded = encodeURIComponent(text);
-    /* WhatsApp deep link uses WHATSAPP_NUMBER defined above */
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
   });
 
-  /* ================= INIT ================= */
   renderStudents('all');
 </script>
 
