@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Leap & Learn Academy (L&L Academy) | Sir Siraj Ahmed</title>
 <meta name="description" content="Leap & Learn Academy - Professional academic mentorship by Sir Siraj Ahmed. Online & Home Tutoring across Pakistan.">
+<link rel="icon" type="image/jpeg" href="1000068889.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -54,13 +55,12 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:0.7rem 1rem;
     box-shadow:var(--shadow-md);
-    flex-wrap:nowrap;
     gap:0.5rem;
   }
   body.rtl .topbar{flex-direction:row-reverse;}
   .brand{display:flex;align-items:center;gap:0.6rem;min-width:0;flex-shrink:1;}
   .brand-logo{
-    height:44px;max-height:44px;width:auto;object-fit:contain;
+    height:44px;max-height:70px;width:auto;object-fit:contain;
     border-radius:8px;background:#fff;padding:2px;flex-shrink:0;
   }
   .brand-text{min-width:0;overflow:hidden;}
@@ -71,21 +71,15 @@
   .btn-lang{
     background:rgba(255,255,255,0.08);
     border:1px solid rgba(255,255,255,0.2);
-    color:#fff;padding:0.5rem 0.7rem;border-radius:30px;font-size:0.72rem;font-weight:600;
+    color:#fff;padding:0.5rem 0.75rem;border-radius:30px;font-size:0.74rem;font-weight:600;
     transition:0.25s;display:flex;align-items:center;gap:0.4rem;white-space:nowrap;
   }
   .btn-lang:hover{background:rgba(255,255,255,0.18);}
-  .btn-login-top{
-    background:var(--emerald);color:#fff;padding:0.55rem 0.9rem;border-radius:30px;
-    font-size:0.75rem;font-weight:600;transition:0.25s;white-space:nowrap;
-    display:flex;align-items:center;gap:0.4rem;
-  }
-  .btn-login-top:hover{background:var(--emerald-dark);transform:translateY(-1px);}
   .hamburger{
-    width:38px;height:38px;border-radius:9px;
+    width:40px;height:40px;border-radius:9px;
     background:rgba(255,255,255,0.08);
     display:flex;align-items:center;justify-content:center;
-    font-size:1rem;color:#fff;transition:0.25s;flex-shrink:0;
+    font-size:1.05rem;color:#fff;transition:0.25s;flex-shrink:0;
   }
   .hamburger:hover{background:rgba(255,255,255,0.18);}
 
@@ -114,14 +108,14 @@
   .drawer-close:hover{background:rgba(255,255,255,0.18);}
   .drawer-links{padding:0.9rem;flex:1;overflow-y:auto;}
   .drawer-links li{margin-bottom:0.25rem;}
-  .drawer-links a, .drawer-links button.drawer-link{
+  .drawer-links a{
     display:flex;align-items:center;gap:0.8rem;width:100%;text-align:left;
     padding:0.85rem 0.9rem;border-radius:10px;font-size:0.92rem;font-weight:600;
     color:var(--text-dark);transition:0.2s;
   }
   .drawer-links i{width:18px;text-align:center;color:var(--emerald-dark);flex-shrink:0;}
-  body.rtl .drawer-links a, body.rtl .drawer-links button.drawer-link{text-align:right;}
-  .drawer-links a:hover, .drawer-links button.drawer-link:hover{background:var(--bg);}
+  body.rtl .drawer-links a{text-align:right;}
+  .drawer-links a:hover{background:var(--bg);}
   .drawer-links a.current{background:#ECFDF5;color:var(--emerald-dark);}
   .drawer-footer{padding:1rem 1.4rem;border-top:1px solid #E2E8F0;font-size:0.72rem;color:var(--text-muted);}
 
@@ -293,8 +287,8 @@
   .adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
   .form-card{background:#fff;border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow-md);border-top:4px solid var(--emerald);}
   .form-group{margin-bottom:1.1rem;}
-  .form-group label{display:block;font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;}
-  .form-group input, .form-group select, .form-group textarea{
+  .form-group label.field-label{display:block;font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;}
+  .form-group input[type="text"], .form-group input[type="tel"], .form-group select, .form-group textarea{
     width:100%;padding:0.75rem 0.85rem;border:1.5px solid #E2E8F0;border-radius:10px;
     font-size:0.9rem;font-family:inherit;transition:0.2s;background:#F8FAFC;
   }
@@ -302,6 +296,36 @@
     outline:none;border-color:var(--emerald);background:#fff;
   }
   .form-group textarea{resize:vertical;min-height:100px;}
+  .field-hint{font-size:0.72rem;color:var(--text-muted);margin-top:0.35rem;display:block;}
+
+  /* Radio Group (Tutoring Mode / Grade) */
+  .radio-group{display:flex;gap:0.7rem;flex-wrap:wrap;}
+  .radio-option{
+    position:relative;flex:1 1 150px;
+  }
+  .radio-option input{position:absolute;opacity:0;width:100%;height:100%;top:0;left:0;cursor:pointer;margin:0;}
+  .radio-option label{
+    display:flex;align-items:center;gap:0.6rem;padding:0.75rem 0.9rem;border:1.5px solid #E2E8F0;
+    border-radius:10px;font-size:0.84rem;font-weight:600;color:var(--text-muted);background:#F8FAFC;
+    transition:0.2s;cursor:pointer;
+  }
+  .radio-option label i{color:var(--text-muted);transition:0.2s;}
+  .radio-option.selected label{border-color:var(--emerald);background:#ECFDF5;color:var(--emerald-dark);}
+  .radio-option.selected label i{color:var(--emerald-dark);}
+
+  /* Checkbox Grid (Subjects) */
+  .checkbox-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;}
+  .checkbox-option{position:relative;}
+  .checkbox-option input{position:absolute;opacity:0;width:100%;height:100%;top:0;left:0;cursor:pointer;margin:0;}
+  .checkbox-option label{
+    display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.75rem;border:1.5px solid #E2E8F0;
+    border-radius:10px;font-size:0.78rem;font-weight:600;color:var(--text-muted);background:#F8FAFC;
+    transition:0.2s;cursor:pointer;min-height:100%;
+  }
+  .checkbox-option label i{color:#CBD5E1;font-size:0.95rem;flex-shrink:0;transition:0.2s;}
+  .checkbox-option.selected label{border-color:var(--amber);background:#FEF3E2;color:#92400E;}
+  .checkbox-option.selected label i{color:var(--amber);}
+
   .btn-whatsapp{
     width:100%;justify-content:center;background:#25D366;color:#fff;font-size:0.92rem;padding:0.85rem;
     box-shadow:0 8px 20px rgba(37,211,102,0.35);
@@ -310,6 +334,8 @@
   .contact-info-card{background:var(--navy);color:#fff;border-radius:var(--radius);padding:1.6rem;margin-bottom:1.25rem;}
   .contact-info-card h3{font-size:1.1rem;font-weight:800;margin-bottom:1rem;}
   .contact-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;font-size:0.87rem;color:#E2E8F0;word-break:break-word;}
+  .contact-row a{color:#E2E8F0;transition:0.2s;}
+  .contact-row a:hover{color:var(--amber-light);}
   .contact-row .ic{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--amber-light);}
   .trust-box{background:#ECFDF5;border:1px solid #A7F3D0;border-radius:var(--radius);padding:1.4rem;}
   .trust-box h4{color:var(--emerald-dark);font-weight:800;margin-bottom:0.7rem;font-size:0.97rem;}
@@ -319,7 +345,7 @@
   /* FOOTER */
   footer{background:var(--navy);color:#94A3B8;padding:2rem 0;text-align:center;font-size:0.8rem;}
   .footer-logo-wrap{display:flex;justify-content:center;margin-bottom:1rem;}
-  .footer-logo{height:60px;max-height:60px;width:auto;object-fit:contain;border-radius:8px;background:#fff;padding:3px;}
+  .footer-logo{height:60px;max-height:70px;width:auto;object-fit:contain;border-radius:8px;background:#fff;padding:3px;}
   footer strong{color:#fff;display:block;margin-bottom:0.3rem;}
   footer p{margin-bottom:0.2rem;}
 
@@ -337,57 +363,26 @@
   .cookie-banner button{background:var(--emerald);color:#fff;padding:0.6rem 1.3rem;border-radius:8px;font-weight:700;font-size:0.8rem;white-space:nowrap;display:flex;align-items:center;gap:0.5rem;}
   .cookie-banner button:hover{background:var(--emerald-dark);}
 
-  /* MODAL */
-  .modal-overlay{
-    position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:2000;
-    display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:0.3s;padding:1rem;
-  }
-  .modal-overlay.open{opacity:1;visibility:visible;}
-  .modal{
-    background:#fff;border-radius:16px;width:420px;max-width:100%;padding:1.8rem;
-    box-shadow:var(--shadow-lg);position:relative;transform:translateY(20px);transition:0.3s;
-    max-height:92vh;overflow-y:auto;
-  }
-  .modal-overlay.open .modal{transform:translateY(0);}
-  .modal-close{position:absolute;top:1rem;right:1rem;font-size:1rem;color:var(--text-muted);width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;}
-  body.rtl .modal-close{right:auto;left:1rem;}
-  .modal-close:hover{background:#F1F5F9;}
-  .modal-icon{width:50px;height:50px;border-radius:50%;background:#ECFDF5;color:var(--emerald-dark);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin:0 auto 0.9rem;}
-  .modal h2{font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:0.4rem;text-align:center;}
-  .modal>p{text-align:center;font-size:0.8rem;color:var(--text-muted);margin-bottom:1.3rem;}
-  .tabs{display:flex;background:#F1F5F9;border-radius:10px;padding:4px;margin-bottom:1.4rem;}
-  .tab-btn{flex:1;padding:0.6rem;border-radius:8px;font-weight:700;font-size:0.8rem;color:var(--text-muted);transition:0.2s;display:flex;align-items:center;justify-content:center;gap:0.4rem;}
-  .tab-btn.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm);}
-  .auth-form{display:none;}
-  .auth-form.active{display:block;}
-  .btn-submit{width:100%;justify-content:center;background:var(--navy);color:#fff;padding:0.8rem;margin-top:0.4rem;border-radius:10px;}
-  .btn-submit:hover{background:var(--navy-light);}
-
   /* ================= RESPONSIVE BREAKPOINTS ================= */
 
-  /* Tablet */
   @media(max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:2rem;}
     .stats{grid-template-columns:1fr 1fr;}
     .grid-3, .philosophy-grid, .adm-grid{grid-template-columns:1fr;}
     .grid-4{grid-template-columns:repeat(2,1fr);}
-    .brand-text span{display:block;}
   }
 
-  /* Small tablet / large phone */
   @media(max-width:768px){
     .topbar{padding:0.6rem 0.8rem;}
     .brand-logo{height:38px;}
     .btn-lang span{display:none;}
     .btn-lang{padding:0.5rem 0.6rem;}
-    .btn-login-top span{display:none;}
-    .btn-login-top{padding:0.55rem 0.65rem;}
     .section-pad{padding:2rem 0;}
     .table-wrap{display:none;}
     .mobile-students-cards{display:block;}
+    .checkbox-grid{grid-template-columns:1fr;}
   }
 
-  /* Mobile phones */
   @media(max-width:600px){
     .container{padding:0 0.85rem;}
     .brand-text h1{font-size:0.82rem;}
@@ -400,6 +395,7 @@
     .filter-bar{gap:0.5rem;}
     .filter-btn{padding:0.5rem 0.9rem;font-size:0.72rem;}
     .form-card, .contact-info-card, .trust-box{padding:1.25rem;}
+    .radio-group{flex-direction:column;}
   }
 
   @media(max-width:420px){
@@ -409,7 +405,6 @@
     .hero h1{font-size:1.5rem;}
   }
 
-  /* Ensure no element causes horizontal overflow */
   * { max-width: 100%; }
   html, body { overflow-x: hidden; }
 </style>
@@ -428,7 +423,6 @@
   </div>
   <div class="nav-actions">
     <button class="btn-lang" id="langBtn" onclick="toggleLanguage()"><i class="fa-solid fa-language"></i> <span id="langBtnText">اردو / UR</span></button>
-    <button class="btn-login-top" onclick="openModal('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Login / Register" data-ur="لاگ ان / رجسٹر">Login / Register</span></button>
     <button class="hamburger" onclick="openDrawer()" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
@@ -446,9 +440,8 @@
     <li><a href="javascript:void(0)" class="nav-link" data-page="subjects" onclick="navigateTo('subjects')"><i class="fa-solid fa-book-open"></i> <span data-en="Subjects & Programming" data-ur="مضامین اور پروگرامنگ">Subjects & Programming</span></a></li>
     <li><a href="javascript:void(0)" class="nav-link" data-page="students" onclick="navigateTo('students')"><i class="fa-solid fa-user-graduate"></i> <span data-en="Enrolled Students" data-ur="زیرِ تعلیم طلباء">Enrolled Students</span></a></li>
     <li><a href="javascript:void(0)" class="nav-link" data-page="admissions" onclick="navigateTo('admissions')"><i class="fa-solid fa-envelope"></i> <span data-en="Admissions & Contact" data-ur="داخلہ اور رابطہ">Admissions & Contact</span></a></li>
-    <li><button class="drawer-link" onclick="openModal('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Login / Register" data-ur="لاگ ان / رجسٹر">Login / Register</span></button></li>
   </ul>
-  <div class="drawer-footer" data-en="2026 Leap & Learn Academy. All rights reserved." data-ur="2026 لیپ اینڈ لرن اکیڈمی۔ جملہ حقوق محفوظ ہیں۔">2026 Leap & Learn Academy. All rights reserved.</div>
+  <div class="drawer-footer" data-en="© 2026 Leap & Learn Academy. All rights reserved." data-ur="© 2026 لیپ اینڈ لرن اکیڈمی۔ جملہ حقوق محفوظ ہیں۔">© 2026 Leap & Learn Academy. All rights reserved.</div>
 </nav>
 
 <main>
@@ -475,7 +468,6 @@
             <div class="quick-actions">
               <button class="btn btn-primary" onclick="navigateTo('subjects')"><span data-en="Explore Subjects" data-ur="مضامین دیکھیں">Explore Subjects</span> <i class="fa-solid fa-arrow-right"></i></button>
               <button class="btn btn-amber" onclick="navigateTo('admissions')"><i class="fa-solid fa-pen-to-square"></i> <span data-en="Enroll Now" data-ur="ابھی داخلہ لیں">Enroll Now</span></button>
-              <button class="btn btn-outline" onclick="openModal('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Student Login" data-ur="طالب علم لاگ ان">Student Login</span></button>
             </div>
           </div>
 
@@ -593,9 +585,14 @@
           <p data-en="Subject mastery & language proficiency skills." data-ur="مضمون کی مہارت اور زبان کی روانی۔">Subject mastery & language proficiency skills.</p>
         </div>
         <div class="subject-card">
-          <div class="subject-icon"><i class="fa-solid fa-code"></i></div>
+          <div class="subject-icon"><i class="fa-solid fa-microchip"></i></div>
           <h4 data-en="Computer Science" data-ur="کمپیوٹر سائنس">Computer Science</h4>
-          <p data-en="Including C Language & Python Programming." data-ur="بشمول سی زبان اور پائتھون پروگرامنگ۔">Including C Language & Python Programming.</p>
+          <p data-en="Fundamentals of computing and information technology." data-ur="کمپیوٹنگ اور انفارمیشن ٹیکنالوجی کی بنیادیں۔">Fundamentals of computing and information technology.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-code"></i></div>
+          <h4 data-en="Programming (C & Python)" data-ur="پروگرامنگ (سی اور پائتھون)">Programming (C & Python)</h4>
+          <p data-en="Hands-on coding instruction in C Language and Python." data-ur="سی زبان اور پائتھون میں عملی کوڈنگ تعلیم۔">Hands-on coding instruction in C Language and Python.</p>
         </div>
         <div class="subject-card">
           <div class="subject-icon"><i class="fa-solid fa-atom"></i></div>
@@ -671,42 +668,118 @@
     <div class="container section-pad">
       <div class="section-head">
         <span class="section-tag" data-en="JOIN US" data-ur="شامل ہوں">JOIN US</span>
-        <h2 data-en="Admissions & Contact — Enroll for Free" data-ur="داخلہ اور رابطہ — مفت اندراج کریں">Admissions & Contact — Enroll for Free</h2>
+        <h2 data-en="Admissions & Contact — Enroll Now" data-ur="داخلہ اور رابطہ — ابھی داخلہ لیں">Admissions & Contact — Enroll Now</h2>
         <p data-en="Fill out the form below and send it directly to us via WhatsApp. Our team will respond promptly to begin your academic journey." data-ur="نیچے دیا گیا فارم مکمل کریں اور براہِ راست واٹس ایپ کے ذریعے ہمیں بھیجیں۔ ہماری ٹیم جلد جواب دے گی۔">Fill out the form below and send it directly to us via WhatsApp. Our team will respond promptly to begin your academic journey.</p>
       </div>
 
       <div class="adm-grid">
         <div class="form-card">
           <form id="admissionForm">
+
+            <!-- 1. Guardian / Parent Name -->
             <div class="form-group">
-              <label data-en="Guardian Name" data-ur="سرپرست کا نام">Guardian Name</label>
+              <label class="field-label" data-en="Guardian / Parent Name" data-ur="سرپرست / والدین کا نام">Guardian / Parent Name</label>
               <input type="text" id="guardianName" required data-en="e.g. Muhammad Asif" data-ur="مثلاً محمد آصف" placeholder="e.g. Muhammad Asif">
             </div>
+
+            <!-- 2. Student Name -->
             <div class="form-group">
-              <label data-en="Student Name" data-ur="طالب علم کا نام">Student Name</label>
+              <label class="field-label" data-en="Student Name" data-ur="طالب علم کا نام">Student Name</label>
               <input type="text" id="studentName" required data-en="Full name of the student" data-ur="طالب علم کا پورا نام" placeholder="Full name of the student">
             </div>
+
+            <!-- 3. WhatsApp / Contact Number -->
             <div class="form-group">
-              <label data-en="Contact / WhatsApp Number" data-ur="رابطہ / واٹس ایپ نمبر">Contact / WhatsApp Number</label>
+              <label class="field-label" data-en="WhatsApp / Contact Number" data-ur="واٹس ایپ / رابطہ نمبر">WhatsApp / Contact Number</label>
               <input type="tel" id="contactNumber" required data-en="03XXXXXXXXX" data-ur="03XXXXXXXXX" placeholder="03XXXXXXXXX">
             </div>
+
+            <!-- 4. Tutoring Mode Selection -->
             <div class="form-group">
-              <label data-en="Subject Selection" data-ur="مضمون کا انتخاب">Subject Selection</label>
-              <select id="subjectSelect">
-                <option data-en="English" data-ur="انگریزی">English</option>
-                <option data-en="Computer Science (C / Python)" data-ur="کمپیوٹر سائنس (سی / پائتھون)">Computer Science (C / Python)</option>
-                <option data-en="Physics" data-ur="طبیعیات">Physics</option>
-                <option data-en="Mathematics" data-ur="ریاضی">Mathematics</option>
-                <option data-en="Islamiat" data-ur="اسلامیات">Islamiat</option>
-                <option data-en="Urdu" data-ur="اردو">Urdu</option>
-                <option data-en="Tarjuma-tul-Quran Majeed" data-ur="ترجمہ القرآن مجید">Tarjuma-tul-Quran Majeed</option>
-                <option data-en="Fine Arts" data-ur="فائن آرٹس">Fine Arts</option>
-              </select>
+              <label class="field-label" data-en="Tutoring Mode" data-ur="تدریسی طریقہ">Tutoring Mode</label>
+              <div class="radio-group" id="tutoringModeGroup">
+                <div class="radio-option">
+                  <input type="radio" name="tutoringMode" id="modeHome" value="Local Home Tutoring" checked>
+                  <label for="modeHome"><i class="fa-solid fa-house-chimney"></i> <span data-en="Local Home Tutoring" data-ur="مقامی گھریلو ٹیوشن">Local Home Tutoring</span></label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="tutoringMode" id="modeOnline" value="Nationwide Online Tutoring">
+                  <label for="modeOnline"><i class="fa-solid fa-wifi"></i> <span data-en="Nationwide Online Tutoring" data-ur="ملک گیر آن لائن ٹیوشن">Nationwide Online Tutoring</span></label>
+                </div>
+              </div>
             </div>
+
+            <!-- 5. Location / Address Details -->
             <div class="form-group">
-              <label data-en="Message (Urdu / English)" data-ur="پیغام (اردو / انگریزی)">Message (Urdu / English)</label>
+              <label class="field-label" data-en="Location / Address Details" data-ur="مقام / پتہ کی تفصیلات">Location / Address Details</label>
+              <input type="text" id="locationDetails" required data-en="City, Area / Sector" data-ur="شہر، علاقہ / سیکٹر" placeholder="City, Area / Sector">
+            </div>
+
+            <!-- 6. Target Grade/Class Selection -->
+            <div class="form-group">
+              <label class="field-label" data-en="Target Grade / Class" data-ur="مطلوبہ جماعت">Target Grade / Class</label>
+              <div class="radio-group" id="gradeGroup">
+                <div class="radio-option">
+                  <input type="radio" name="targetGrade" id="grade9" value="Grade 9" checked>
+                  <label for="grade9"><i class="fa-solid fa-chalkboard"></i> <span data-en="Grade 9" data-ur="نویں جماعت">Grade 9</span></label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="targetGrade" id="grade10" value="Grade 10">
+                  <label for="grade10"><i class="fa-solid fa-chalkboard"></i> <span data-en="Grade 10" data-ur="دسویں جماعت">Grade 10</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Subject Selection (min 3) -->
+            <div class="form-group">
+              <label class="field-label" data-en="Subject Selection" data-ur="مضامین کا انتخاب">Subject Selection</label>
+              <span class="field-hint" data-en="Please select a minimum of 3 subjects." data-ur="براہ کرم کم از کم 3 مضامین منتخب کریں۔">Please select a minimum of 3 subjects.</span>
+              <div class="checkbox-grid" id="subjectsGroup" style="margin-top:0.6rem;">
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjEnglish" value="English (Subject & Language)">
+                  <label for="subjEnglish"><i class="fa-solid fa-square"></i> <span data-en="English (Subject & Language)" data-ur="انگریزی (مضمون اور زبان)">English (Subject & Language)</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjCS" value="Computer Science">
+                  <label for="subjCS"><i class="fa-solid fa-square"></i> <span data-en="Computer Science" data-ur="کمپیوٹر سائنس">Computer Science</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjProg" value="Programming (C & Python)">
+                  <label for="subjProg"><i class="fa-solid fa-square"></i> <span data-en="Programming (C & Python)" data-ur="پروگرامنگ (سی اور پائتھون)">Programming (C & Python)</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjPhysics" value="Physics">
+                  <label for="subjPhysics"><i class="fa-solid fa-square"></i> <span data-en="Physics" data-ur="طبیعیات">Physics</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjMath" value="Mathematics">
+                  <label for="subjMath"><i class="fa-solid fa-square"></i> <span data-en="Mathematics" data-ur="ریاضی">Mathematics</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjIslamiat" value="Islamiat">
+                  <label for="subjIslamiat"><i class="fa-solid fa-square"></i> <span data-en="Islamiat" data-ur="اسلامیات">Islamiat</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjUrdu" value="Urdu">
+                  <label for="subjUrdu"><i class="fa-solid fa-square"></i> <span data-en="Urdu" data-ur="اردو">Urdu</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjTarjuma" value="Tarjuma-tul-Quran Majeed">
+                  <label for="subjTarjuma"><i class="fa-solid fa-square"></i> <span data-en="Tarjuma-tul-Quran Majeed" data-ur="ترجمہ القرآن مجید">Tarjuma-tul-Quran Majeed</span></label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" class="subjectChk" id="subjArts" value="Fine Arts">
+                  <label for="subjArts"><i class="fa-solid fa-square"></i> <span data-en="Fine Arts" data-ur="فائن آرٹس">Fine Arts</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. Message / Preferred Timings -->
+            <div class="form-group">
+              <label class="field-label" data-en="Message / Preferred Timings" data-ur="پیغام / پسندیدہ وقت">Message / Preferred Timings</label>
               <textarea id="messageBox" data-en="Write your query or preferred timing..." data-ur="اپنا سوال یا پسندیدہ وقت لکھیں..." placeholder="Write your query or preferred timing..."></textarea>
             </div>
+
             <button type="submit" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> <span data-en="Send Message via WhatsApp" data-ur="واٹس ایپ کے ذریعے پیغام بھیجیں">Send Message via WhatsApp</span></button>
           </form>
         </div>
@@ -715,10 +788,10 @@
           <div class="contact-info-card">
             <h3 data-en="Get in Touch" data-ur="رابطہ کریں">Get in Touch</h3>
             <!-- UPDATE YOUR WHATSAPP NUMBER HERE (display text) -->
-            <div class="contact-row"><div class="ic"><i class="fa-solid fa-phone"></i></div> <span>+92 345 5924434</span></div>
+            <div class="contact-row"><div class="ic"><i class="fa-solid fa-phone"></i></div> <a href="tel:+923469745468">+92 346 9745468</a></div>
             <!-- UPDATE YOUR EMAIL HERE (display text) -->
-            <div class="contact-row"><div class="ic"><i class="fa-solid fa-envelope"></i></div> <span>sa54326577@gmail.com</span></div>
-            <div class="contact-row"><div class="ic"><i class="fa-solid fa-location-dot"></i></div> <span data-en="Daultala, Rawalpindi, Punjab, Pakistan" data-ur="راولپنڈی، پنجاب، پاکستان">Rawalpindi, Punjab, Pakistan</span></div>
+            <div class="contact-row"><div class="ic"><i class="fa-solid fa-envelope"></i></div> <a href="mailto:sa54326577@gmail.com">sa54326577@gmail.com</a></div>
+            <div class="contact-row"><div class="ic"><i class="fa-solid fa-location-dot"></i></div> <span data-en="Rawalpindi, Punjab, Pakistan" data-ur="راولپنڈی، پنجاب، پاکستان">Rawalpindi, Punjab, Pakistan</span></div>
           </div>
           <div class="trust-box">
             <h4 data-en="Why Families Trust L&L Academy" data-ur="خاندان ایل اینڈ ایل اکیڈمی پر کیوں بھروسہ کرتے ہیں">Why Families Trust L&L Academy</h4>
@@ -743,7 +816,7 @@
       <img src="1000068889.jpg" alt="Leap & Learn Academy Logo" class="footer-logo" onerror="this.style.display='none'">
     </div>
     <strong data-en="Leap & Learn Academy (L&L Academy)" data-ur="لیپ اینڈ لرن اکیڈمی (ایل اینڈ ایل اکیڈمی)">Leap & Learn Academy (L&L Academy)</strong>
-    <p data-en="2026 All Rights Reserved. Founded & Led by Sir Siraj Ahmed." data-ur="2026 جملہ حقوق محفوظ ہیں۔ بانی و سربراہ سر سراج احمد۔">2026 All Rights Reserved. Founded & Led by Sir Siraj Ahmed.</p>
+    <p data-en="© 2026 All Rights Reserved. Founded & Led by Sir Siraj Ahmed." data-ur="© 2026 جملہ حقوق محفوظ ہیں۔ بانی و سربراہ سر سراج احمد۔">© 2026 All Rights Reserved. Founded & Led by Sir Siraj Ahmed.</p>
   </div>
 </footer>
 
@@ -756,59 +829,10 @@
   <button onclick="acceptCookies()"><i class="fa-solid fa-check"></i> <span data-en="Accept Cookies" data-ur="کوکیز قبول کریں">Accept Cookies</span></button>
 </div>
 
-<!-- ============ LOGIN / REGISTER MODAL ============ -->
-<div class="modal-overlay" id="authModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-    <div class="modal-icon"><i class="fa-solid fa-user-graduate"></i></div>
-    <h2 data-en="Welcome to L&L Academy" data-ur="ایل اینڈ ایل اکیڈمی میں خوش آمدید">Welcome to L&L Academy</h2>
-    <p data-en="Access your student portal or create a new account" data-ur="اپنے طالب علم پورٹل تک رسائی حاصل کریں یا نیا اکاؤنٹ بنائیں">Access your student portal or create a new account</p>
-    <div class="tabs">
-      <button class="tab-btn active" id="tabLoginBtn" onclick="switchTab('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Student Login" data-ur="طالب علم لاگ ان">Student Login</span></button>
-      <button class="tab-btn" id="tabRegisterBtn" onclick="switchTab('register')"><i class="fa-solid fa-user-plus"></i> <span data-en="New Registration" data-ur="نیا اندراج">New Registration</span></button>
-    </div>
-
-    <form class="auth-form active" id="loginForm" onsubmit="demoSubmit(event,'login')">
-      <div class="form-group">
-        <label data-en="Username" data-ur="یوزر نیم">Username</label>
-        <input type="text" required data-en="Enter your username" data-ur="اپنا یوزر نیم درج کریں" placeholder="Enter your username">
-      </div>
-      <div class="form-group">
-        <label data-en="Password" data-ur="پاس ورڈ">Password</label>
-        <input type="password" required data-en="Enter your password" data-ur="اپنا پاس ورڈ درج کریں" placeholder="Enter your password">
-      </div>
-      <button type="submit" class="btn btn-submit"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Login to Portal" data-ur="پورٹل میں لاگ ان کریں">Login to Portal</span></button>
-    </form>
-
-    <form class="auth-form" id="registerForm" onsubmit="demoSubmit(event,'register')">
-      <div class="form-group">
-        <label data-en="Full Name" data-ur="پورا نام">Full Name</label>
-        <input type="text" required data-en="Enter your full name" data-ur="اپنا پورا نام درج کریں" placeholder="Enter your full name">
-      </div>
-      <div class="form-group">
-        <label data-en="Email Address" data-ur="ای میل ایڈریس">Email Address</label>
-        <input type="email" required data-en="Enter your email" data-ur="اپنا ای میل درج کریں" placeholder="Enter your email">
-      </div>
-      <div class="form-group">
-        <label data-en="Password" data-ur="پاس ورڈ">Password</label>
-        <input type="password" required data-en="Create a password" data-ur="پاس ورڈ بنائیں" placeholder="Create a password">
-      </div>
-      <div class="form-group">
-        <label data-en="Grade" data-ur="جماعت">Grade</label>
-        <select>
-          <option data-en="Grade 9" data-ur="نویں جماعت">Grade 9</option>
-          <option data-en="Grade 10" data-ur="دسویں جماعت">Grade 10</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-submit"><i class="fa-solid fa-user-plus"></i> <span data-en="Create Account" data-ur="اکاؤنٹ بنائیں">Create Account</span></button>
-    </form>
-  </div>
-</div>
-
 <script>
   /* ================= CONFIG ================= */
   /* UPDATE YOUR WHATSAPP NUMBER HERE - format: countrycode+number, no plus sign, no spaces */
-  const WHATSAPP_NUMBER = "+923455924434";
+  const WHATSAPP_NUMBER = "+923469745468";
   /* UPDATE YOUR EMAIL HERE */
   const CONTACT_EMAIL = "sa54326577@gmail.com";
 
@@ -835,35 +859,6 @@
     document.getElementById('drawerOverlay').classList.remove('open');
     document.body.style.overflow = '';
   }
-
-  /* ================= MODAL ================= */
-  function openModal(tab){
-    document.getElementById('authModal').classList.add('open');
-    switchTab(tab || 'login');
-    closeDrawer();
-  }
-  function closeModal(){
-    document.getElementById('authModal').classList.remove('open');
-  }
-  function switchTab(tab){
-    const isLogin = tab === 'login';
-    document.getElementById('tabLoginBtn').classList.toggle('active', isLogin);
-    document.getElementById('tabRegisterBtn').classList.toggle('active', !isLogin);
-    document.getElementById('loginForm').classList.toggle('active', isLogin);
-    document.getElementById('registerForm').classList.toggle('active', !isLogin);
-  }
-  function demoSubmit(e, type){
-    e.preventDefault();
-    const lang = document.documentElement.getAttribute('lang');
-    const msg = type === 'login'
-      ? (lang==='ur' ? "یہ ایک ڈیمو لاگ ان ہے۔ بیک اینڈ بعد میں شامل کیا جائے گا۔" : "This is a demo login. Backend integration coming soon.")
-      : (lang==='ur' ? "رجسٹریشن ڈیمو کامیاب۔ جلد ہی فعال ہو جائے گا۔" : "Demo registration successful. Full functionality coming soon.");
-    alert(msg);
-    closeModal();
-  }
-  document.getElementById('authModal').addEventListener('click', function(e){
-    if(e.target === this) closeModal();
-  });
 
   /* ================= COOKIES ================= */
   function acceptCookies(){
@@ -901,6 +896,36 @@
     document.getElementById('langBtnText').textContent = lang === 'ur' ? 'English / EN' : 'اردو / UR';
     renderStudents(document.querySelector('.filter-btn.active').getAttribute('data-filter'));
   }
+
+  /* ================= RADIO / CHECKBOX VISUAL STATE ================= */
+  function setupRadioGroup(groupId){
+    const group = document.getElementById(groupId);
+    if(!group) return;
+    const options = group.querySelectorAll('.radio-option');
+    function refresh(){
+      options.forEach(opt=>{
+        const input = opt.querySelector('input');
+        opt.classList.toggle('selected', input.checked);
+      });
+    }
+    options.forEach(opt=>{
+      opt.querySelector('input').addEventListener('change', refresh);
+    });
+    refresh();
+  }
+  setupRadioGroup('tutoringModeGroup');
+  setupRadioGroup('gradeGroup');
+
+  function setupCheckboxGroup(){
+    const options = document.querySelectorAll('#subjectsGroup .checkbox-option');
+    options.forEach(opt=>{
+      const input = opt.querySelector('input');
+      input.addEventListener('change', ()=>{
+        opt.classList.toggle('selected', input.checked);
+      });
+    });
+  }
+  setupCheckboxGroup();
 
   /* ================= STUDENTS DATA ================= */
   const students = [
@@ -975,16 +1000,29 @@
   /* ================= ADMISSION FORM -> WHATSAPP ================= */
   document.getElementById('admissionForm').addEventListener('submit', function(e){
     e.preventDefault();
+    const lang = document.documentElement.getAttribute('lang') || 'en';
+
     const guardian = document.getElementById('guardianName').value.trim();
     const student = document.getElementById('studentName').value.trim();
     const contact = document.getElementById('contactNumber').value.trim();
-    const subject = document.getElementById('subjectSelect').value;
+    const tutoringMode = document.querySelector('input[name="tutoringMode"]:checked').value;
+    const location = document.getElementById('locationDetails').value.trim();
+    const targetGrade = document.querySelector('input[name="targetGrade"]:checked').value;
     const message = document.getElementById('messageBox').value.trim();
 
-    if(!guardian || !student || !contact){
-      alert(document.documentElement.getAttribute('lang') === 'ur'
+    const selectedSubjects = Array.from(document.querySelectorAll('.subjectChk:checked')).map(el => el.value);
+
+    if(!guardian || !student || !contact || !location){
+      alert(lang === 'ur'
         ? "براہ کرم تمام ضروری فیلڈز پُر کریں۔"
         : "Please fill in all required fields.");
+      return;
+    }
+
+    if(selectedSubjects.length < 3){
+      alert(lang === 'ur'
+        ? "براہ کرم کم از کم 3 مضامین منتخب کریں۔"
+        : "Please select a minimum of 3 subjects before submitting.");
       return;
     }
 
@@ -994,7 +1032,10 @@
 Guardian Name: ${guardian}
 Student Name: ${student}
 Contact Number: ${contact}
-Subject: ${subject}
+Tutoring Mode: ${tutoringMode}
+Location: ${location}
+Target Grade: ${targetGrade}
+Subjects Selected: ${selectedSubjects.join(', ')}
 Message: ${message || '-'}`;
 
     const encoded = encodeURIComponent(text);
