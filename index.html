@@ -1,0 +1,913 @@
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leap & Learn Academy (L&L Academy) | Sir Seraj Ahmad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --navy:#0F172A;
+    --navy-light:#1E293B;
+    --emerald:#059669;
+    --emerald-dark:#047857;
+    --amber:#D97706;
+    --amber-light:#FBBF24;
+    --bg:#F8FAFC;
+    --white:#FFFFFF;
+    --text-dark:#0F172A;
+    --text-muted:#64748B;
+    --shadow-sm:0 1px 3px rgba(15,23,42,0.08);
+    --shadow-md:0 4px 12px rgba(15,23,42,0.10);
+    --shadow-lg:0 10px 30px rgba(15,23,42,0.15);
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text-dark);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  body.rtl{
+    font-family:'Noto Nastaliq Urdu','Inter',sans-serif;
+    direction:rtl;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;outline:none;background:none;}
+
+  /* ===== TOPBAR ===== */
+  .topbar{
+    position:sticky;top:0;z-index:900;
+    background:var(--navy);
+    color:#fff;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+    box-shadow:var(--shadow-md);
+  }
+  body.rtl .topbar{flex-direction:row-reverse;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-icon{
+    width:44px;height:44px;border-radius:10px;
+    background:linear-gradient(135deg,var(--amber),var(--emerald));
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;font-weight:800;color:#fff;letter-spacing:0.5px;
+    flex-shrink:0;
+  }
+  .brand-text h1{font-size:16px;font-weight:700;letter-spacing:0.3px;}
+  .brand-text span{font-size:11px;color:#CBD5E1;display:block;}
+  .nav-actions{display:flex;align-items:center;gap:10px;}
+  body.rtl .nav-actions{flex-direction:row-reverse;}
+  .btn-lang{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;padding:8px 14px;border-radius:30px;font-size:13px;font-weight:600;
+    transition:0.25s;display:flex;align-items:center;gap:7px;
+  }
+  .btn-lang:hover{background:rgba(255,255,255,0.18);}
+  .btn-login-top{
+    background:var(--emerald);color:#fff;padding:9px 18px;border-radius:30px;
+    font-size:13px;font-weight:600;transition:0.25s;white-space:nowrap;
+    display:flex;align-items:center;gap:7px;
+  }
+  .btn-login-top:hover{background:var(--emerald-dark);transform:translateY(-1px);}
+  .hamburger{
+    width:42px;height:42px;border-radius:10px;
+    background:rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;color:#fff;transition:0.25s;
+  }
+  .hamburger:hover{background:rgba(255,255,255,0.18);}
+
+  /* ===== DRAWER ===== */
+  .drawer-overlay{
+    position:fixed;inset:0;background:rgba(15,23,42,0.55);
+    opacity:0;visibility:hidden;transition:0.3s;z-index:1000;
+  }
+  .drawer-overlay.open{opacity:1;visibility:visible;}
+  .drawer{
+    position:fixed;top:0;right:0;height:100%;width:300px;max-width:85%;
+    background:#fff;z-index:1001;
+    transform:translateX(100%);transition:transform 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow:-10px 0 30px rgba(0,0,0,0.2);
+    display:flex;flex-direction:column;
+  }
+  .drawer.open{transform:translateX(0);}
+  body.rtl .drawer{right:auto;left:0;transform:translateX(-100%);box-shadow:10px 0 30px rgba(0,0,0,0.2);}
+  body.rtl .drawer.open{transform:translateX(0);}
+  .drawer-header{
+    background:var(--navy);color:#fff;padding:22px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .drawer-header h3{font-size:16px;font-weight:700;}
+  .drawer-close{color:#fff;font-size:17px;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);}
+  .drawer-close:hover{background:rgba(255,255,255,0.18);}
+  .drawer-links{padding:14px;flex:1;overflow-y:auto;}
+  .drawer-links li{margin-bottom:4px;}
+  .drawer-links a, .drawer-links button.drawer-link{
+    display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+    padding:13px 14px;border-radius:10px;font-size:14.5px;font-weight:600;
+    color:var(--text-dark);transition:0.2s;
+  }
+  .drawer-links i{width:18px;text-align:center;color:var(--emerald-dark);}
+  body.rtl .drawer-links a, body.rtl .drawer-links button.drawer-link{text-align:right;}
+  .drawer-links a:hover, .drawer-links button.drawer-link:hover{background:var(--bg);}
+  .drawer-links a.current{background:#ECFDF5;color:var(--emerald-dark);}
+  .drawer-footer{padding:16px 22px;border-top:1px solid #E2E8F0;font-size:12px;color:var(--text-muted);}
+
+  /* ===== PAGE VIEWS ===== */
+  main{min-height:70vh;}
+  .page-view{display:none;}
+  .page-view.active{display:block;animation:fadeSlide 0.45s ease;}
+  @keyframes fadeSlide{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .section-pad{padding:60px 0;}
+  .section-head{text-align:center;max-width:720px;margin:0 auto 42px;}
+  .section-tag{
+    display:inline-block;color:var(--amber);background:#FEF3E2;
+    padding:6px 16px;border-radius:30px;font-size:12.5px;font-weight:700;
+    letter-spacing:0.5px;margin-bottom:14px;border:1px solid #FCD9A8;
+  }
+  .section-head h2{font-size:30px;font-weight:800;color:var(--navy);margin-bottom:12px;}
+  .section-head p{color:var(--text-muted);font-size:15.5px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,#1E3A5F 60%,#14532D 140%);
+    color:#fff;padding:70px 0 60px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;top:-80px;right:-80px;width:320px;height:320px;
+    background:radial-gradient(circle,rgba(217,119,6,0.25),transparent 70%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:46px;align-items:center;position:relative;z-index:2;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(217,119,6,0.18);
+    border:1px solid rgba(251,191,36,0.4);color:var(--amber-light);
+    padding:7px 16px;border-radius:30px;font-size:12.5px;font-weight:700;margin-bottom:20px;
+  }
+  .hero h1{font-size:38px;font-weight:800;line-height:1.28;margin-bottom:18px;}
+  .hero h1 span{color:var(--amber-light);}
+  .hero p.lead{font-size:15.5px;color:#CBD5E1;margin-bottom:22px;max-width:620px;}
+  .delivery-note{
+    display:flex;gap:16px;margin:22px 0 28px;flex-wrap:wrap;
+  }
+  .delivery-pill{
+    background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);
+    border-radius:12px;padding:14px 16px;font-size:13px;flex:1;min-width:220px;
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .delivery-pill i{color:var(--amber-light);font-size:16px;margin-top:2px;}
+  .delivery-pill b{display:block;color:#fff;font-size:12.5px;margin-bottom:4px;letter-spacing:0.5px;}
+  .quick-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;}
+  .btn{
+    padding:13px 24px;border-radius:10px;font-weight:700;font-size:14px;
+    transition:0.25s;display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-primary{background:var(--emerald);color:#fff;box-shadow:0 6px 18px rgba(5,150,105,0.35);}
+  .btn-primary:hover{background:var(--emerald-dark);transform:translateY(-2px);}
+  .btn-amber{background:var(--amber);color:#fff;box-shadow:0 6px 18px rgba(217,119,6,0.35);}
+  .btn-amber:hover{background:#B45309;transform:translateY(-2px);}
+  .btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,0.5);color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,0.1);}
+
+  .tutor-card{
+    background:#fff;color:var(--text-dark);border-radius:18px;padding:26px;
+    box-shadow:var(--shadow-lg);border-top:4px solid var(--amber);position:relative;z-index:2;
+  }
+  .tutor-avatar{
+    width:78px;height:78px;border-radius:50%;
+    background:linear-gradient(135deg,var(--navy),var(--emerald));
+    color:#fff;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;
+  }
+  .tutor-card h3{font-size:19px;font-weight:800;color:var(--navy);}
+  .tutor-card .role{color:var(--emerald-dark);font-weight:600;font-size:13px;margin-bottom:10px;}
+  .stars{color:var(--amber);font-size:13px;margin-bottom:10px;}
+  .stars i{margin-right:1px;}
+  .tutor-card p{font-size:13.5px;color:var(--text-muted);}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;position:relative;z-index:2;}
+  .stat-card{
+    background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);
+    border-radius:14px;padding:22px;text-align:center;backdrop-filter:blur(4px);
+  }
+  .stat-card i{font-size:20px;color:var(--amber-light);margin-bottom:10px;}
+  .stat-card .num{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px;}
+  .stat-card .lbl{font-size:12.5px;color:#CBD5E1;font-weight:600;}
+
+  /* ===== CARD GRID GENERIC ===== */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);
+    border:1px solid #EEF2F7;transition:0.3s;
+  }
+  .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);border-color:#FCD9A8;}
+
+  /* ABOUT PAGE */
+  .about-hero{background:var(--navy);color:#fff;padding:50px 0;text-align:center;}
+  .about-hero h2{font-size:30px;font-weight:800;margin-bottom:10px;}
+  .about-hero p{color:#CBD5E1;max-width:650px;margin:0 auto;font-size:14.5px;}
+  .philosophy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .philosophy-card{
+    background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);
+    border-left:4px solid var(--emerald);
+  }
+  body.rtl .philosophy-card{border-left:none;border-right:4px solid var(--emerald);}
+  .philosophy-card .icon{
+    width:46px;height:46px;border-radius:10px;background:#ECFDF5;color:var(--emerald-dark);
+    display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px;
+  }
+  .philosophy-card h4{font-size:16.5px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .philosophy-card p{font-size:13.8px;color:var(--text-muted);}
+
+  /* SUBJECTS */
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .subject-card{
+    background:#fff;border-radius:var(--radius);padding:24px;text-align:center;
+    box-shadow:var(--shadow-sm);border:1px solid #EEF2F7;transition:0.3s;cursor:default;
+  }
+  .subject-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--amber);}
+  .subject-icon{
+    width:58px;height:58px;border-radius:50%;margin:0 auto 14px;
+    background:linear-gradient(135deg,#FEF3E2,#ECFDF5);
+    display:flex;align-items:center;justify-content:center;font-size:21px;color:var(--navy);
+  }
+  .subject-card h4{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .subject-card p{font-size:12.8px;color:var(--text-muted);}
+
+  /* STUDENTS TABLE */
+  .filter-bar{display:flex;justify-content:center;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+  .filter-btn{
+    padding:9px 20px;border-radius:30px;font-size:13px;font-weight:700;
+    border:1.5px solid #E2E8F0;background:#fff;color:var(--text-muted);transition:0.2s;
+    display:flex;align-items:center;gap:8px;
+  }
+  .filter-btn.active, .filter-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .table-wrap{
+    overflow-x:auto;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-sm);
+    border:1px solid #EEF2F7;
+  }
+  table{width:100%;border-collapse:collapse;min-width:620px;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:16px;text-align:left;font-size:13px;letter-spacing:0.4px;font-weight:700;}
+  body.rtl thead th{text-align:right;}
+  tbody td{padding:15px 16px;font-size:13.8px;border-bottom:1px solid #F1F5F9;color:var(--text-dark);}
+  tbody tr:hover{background:#F8FAFC;}
+  .pill{
+    display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:30px;font-size:12px;font-weight:700;
+  }
+  .pill-active{background:#ECFDF5;color:var(--emerald-dark);border:1px solid #A7F3D0;}
+  .pill-graduated{background:#FEF3E2;color:var(--amber);border:1px solid #FCD9A8;}
+
+  /* ADMISSIONS */
+  .adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start;}
+  .form-card{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:var(--shadow-md);border-top:4px solid var(--emerald);}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+  .form-group input, .form-group select, .form-group textarea{
+    width:100%;padding:12px 14px;border:1.5px solid #E2E8F0;border-radius:10px;
+    font-size:14px;font-family:inherit;transition:0.2s;background:#F8FAFC;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus{
+    outline:none;border-color:var(--emerald);background:#fff;
+  }
+  .form-group textarea{resize:vertical;min-height:100px;}
+  .btn-whatsapp{
+    width:100%;justify-content:center;background:#25D366;color:#fff;font-size:15px;padding:14px;
+    box-shadow:0 8px 20px rgba(37,211,102,0.35);
+  }
+  .btn-whatsapp:hover{background:#1DAE55;transform:translateY(-2px);}
+  .contact-info-card{background:var(--navy);color:#fff;border-radius:var(--radius);padding:30px;margin-bottom:20px;}
+  .contact-info-card h3{font-size:18px;font-weight:800;margin-bottom:16px;}
+  .contact-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:14px;color:#E2E8F0;}
+  .contact-row .ic{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--amber-light);}
+  .trust-box{background:#ECFDF5;border:1px solid #A7F3D0;border-radius:var(--radius);padding:22px;}
+  .trust-box h4{color:var(--emerald-dark);font-weight:800;margin-bottom:10px;font-size:15.5px;}
+  .trust-box ul li{font-size:13.5px;color:#065F46;margin-bottom:10px;display:flex;align-items:flex-start;gap:9px;}
+  .trust-box ul li i{margin-top:3px;color:var(--emerald-dark);}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:#94A3B8;padding:30px 0;text-align:center;font-size:13px;}
+  footer strong{color:#fff;}
+
+  /* COOKIE BANNER */
+  .cookie-banner{
+    position:fixed;bottom:-150px;left:0;right:0;z-index:1500;
+    background:var(--navy);color:#fff;padding:18px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    box-shadow:0 -8px 24px rgba(0,0,0,0.2);transition:bottom 0.5s ease;
+  }
+  .cookie-banner.show{bottom:0;}
+  .cookie-banner .cookie-text{display:flex;align-items:center;gap:12px;max-width:650px;}
+  .cookie-banner .cookie-text i{font-size:20px;color:var(--amber-light);flex-shrink:0;}
+  .cookie-banner p{font-size:13.5px;color:#CBD5E1;}
+  .cookie-banner button{background:var(--emerald);color:#fff;padding:10px 22px;border-radius:8px;font-weight:700;font-size:13px;white-space:nowrap;display:flex;align-items:center;gap:8px;}
+  .cookie-banner button:hover{background:var(--emerald-dark);}
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:2000;
+    display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:0.3s;padding:20px;
+  }
+  .modal-overlay.open{opacity:1;visibility:visible;}
+  .modal{
+    background:#fff;border-radius:16px;width:420px;max-width:100%;padding:30px;
+    box-shadow:var(--shadow-lg);position:relative;transform:translateY(20px);transition:0.3s;
+  }
+  .modal-overlay.open .modal{transform:translateY(0);}
+  .modal-close{position:absolute;top:16px;right:16px;font-size:16px;color:var(--text-muted);width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+  body.rtl .modal-close{right:auto;left:16px;}
+  .modal-close:hover{background:#F1F5F9;}
+  .modal-icon{width:52px;height:52px;border-radius:50%;background:#ECFDF5;color:var(--emerald-dark);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 14px;}
+  .modal h2{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;text-align:center;}
+  .modal>p{text-align:center;font-size:13px;color:var(--text-muted);margin-bottom:20px;}
+  .tabs{display:flex;background:#F1F5F9;border-radius:10px;padding:4px;margin-bottom:22px;}
+  .tab-btn{flex:1;padding:10px;border-radius:8px;font-weight:700;font-size:13.5px;color:var(--text-muted);transition:0.2s;display:flex;align-items:center;justify-content:center;gap:7px;}
+  .tab-btn.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm);}
+  .auth-form{display:none;}
+  .auth-form.active{display:block;}
+  .btn-submit{width:100%;justify-content:center;background:var(--navy);color:#fff;padding:13px;margin-top:6px;border-radius:10px;}
+  .btn-submit:hover{background:var(--navy-light);}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .grid-3, .philosophy-grid, .adm-grid{grid-template-columns:1fr;}
+    .grid-4{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:520px){
+    .stats{grid-template-columns:1fr;}
+    .grid-4{grid-template-columns:1fr;}
+    .hero h1{font-size:28px;}
+    .brand-text h1{font-size:14px;}
+    .brand-text span{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon">L&amp;L</div>
+    <div class="brand-text">
+      <h1 data-en="Leap & Learn Academy" data-ur="لیپ اینڈ لرن اکیڈمی">Leap & Learn Academy</h1>
+      <span data-en="Excellence in Academic Mentorship" data-ur="علمی رہنمائی میں عمدگی">Excellence in Academic Mentorship</span>
+    </div>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-lang" id="langBtn" onclick="toggleLanguage()"><i class="fa-solid fa-language"></i> <span id="langBtnText">اردو / UR</span></button>
+    <button class="btn-login-top" onclick="openModal('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Login / Register" data-ur="لاگ ان / رجسٹر">Login / Register</span></button>
+    <button class="hamburger" onclick="openDrawer()"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- ============ DRAWER ============ -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<nav class="drawer" id="drawer">
+  <div class="drawer-header">
+    <h3 data-en="Navigation Menu" data-ur="مینیو">Navigation Menu</h3>
+    <button class="drawer-close" onclick="closeDrawer()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="javascript:void(0)" class="nav-link current" data-page="home" onclick="navigateTo('home')"><i class="fa-solid fa-house"></i> <span data-en="Home" data-ur="ہوم">Home</span></a></li>
+    <li><a href="javascript:void(0)" class="nav-link" data-page="about" onclick="navigateTo('about')"><i class="fa-solid fa-user"></i> <span data-en="About Me" data-ur="میرے بارے میں">About Me</span></a></li>
+    <li><a href="javascript:void(0)" class="nav-link" data-page="subjects" onclick="navigateTo('subjects')"><i class="fa-solid fa-book-open"></i> <span data-en="Subjects & Programming" data-ur="مضامین اور پروگرامنگ">Subjects & Programming</span></a></li>
+    <li><a href="javascript:void(0)" class="nav-link" data-page="students" onclick="navigateTo('students')"><i class="fa-solid fa-user-graduate"></i> <span data-en="Enrolled Students" data-ur="زیرِ تعلیم طلباء">Enrolled Students</span></a></li>
+    <li><a href="javascript:void(0)" class="nav-link" data-page="admissions" onclick="navigateTo('admissions')"><i class="fa-solid fa-envelope"></i> <span data-en="Admissions & Contact" data-ur="داخلہ اور رابطہ">Admissions & Contact</span></a></li>
+    <li><button class="drawer-link" onclick="openModal('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Login / Register" data-ur="لاگ ان / رجسٹر">Login / Register</span></button></li>
+  </ul>
+  <div class="drawer-footer" data-en="2025 Leap & Learn Academy. All rights reserved." data-ur="2025 لیپ اینڈ لرن اکیڈمی۔ جملہ حقوق محفوظ ہیں۔">2025 Leap & Learn Academy. All rights reserved.</div>
+</nav>
+
+<main>
+
+  <!-- ============ HOME PAGE ============ -->
+  <section id="home" class="page-view active">
+    <div class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge"><i class="fa-solid fa-award"></i> <span data-en="Trusted by Students & Parents Across Pakistan" data-ur="پاکستان بھر کے طلباء اور والدین کا بھروسہ">Trusted by Students & Parents Across Pakistan</span></div>
+            <h1 data-en='Shaping Academic Futures Through <span>Disciplined Mentorship</span> & Pedagogical Excellence' data-ur='<span>نظم و ضبط پر مبنی رہنمائی</span> اور تدریسی عمدگی کے ذریعے علمی مستقبل کی تشکیل'>
+              Shaping Academic Futures Through <span>Disciplined Mentorship</span> & Pedagogical Excellence
+            </h1>
+            <p class="lead" data-en="Leap & Learn Academy, led by Founder & Principal Instructor Sir Seraj Ahmad, has spent over two years cultivating rigorous, individualized instruction for secondary and higher-secondary students. Our pedagogy integrates structured curriculum design, continuous diagnostic assessment, and board-exam simulation, producing consistent, demonstrable academic breakthroughs recognized by students, parents, and examination boards alike." data-ur="لیپ اینڈ لرن اکیڈمی، جس کی قیادت بانی اور پرنسپل انسٹرکٹر سر سراج احمد کرتے ہیں، گزشتہ دو سال سے ثانوی اور اعلیٰ ثانوی طلباء کے لیے سخت اور انفرادی تعلیم فراہم کر رہی ہے۔ ہماری تدریسی حکمتِ عملی منظم نصاب، مسلسل جانچ اور بورڈ امتحان کی مشق پر مبنی ہے، جس کے نتیجے میں طلباء اور والدین دونوں کی جانب سے مسلسل علمی کامیابیاں دیکھنے میں آئی ہیں۔">
+              Leap & Learn Academy, led by Founder & Principal Instructor Sir Seraj Ahmad, has spent over two years cultivating rigorous, individualized instruction for secondary and higher-secondary students. Our pedagogy integrates structured curriculum design, continuous diagnostic assessment, and board-exam simulation, producing consistent, demonstrable academic breakthroughs recognized by students, parents, and examination boards alike.
+            </p>
+
+            <div class="delivery-note">
+              <div class="delivery-pill"><i class="fa-solid fa-wifi"></i><div><b data-en="ONLINE TUTORING" data-ur="آن لائن ٹیوشن">ONLINE TUTORING</b><span data-en="Nationwide online instruction across Pakistan with identical structured rigor and one-on-one devotion." data-ur="پاکستان بھر میں آن لائن تعلیم، وہی نظم اور انفرادی توجہ کے ساتھ۔">Nationwide online instruction across Pakistan with identical structured rigor and one-on-one devotion.</span></div></div>
+              <div class="delivery-pill"><i class="fa-solid fa-house-chimney"></i><div><b data-en="HOME TUTORING" data-ur="گھریلو ٹیوشن">HOME TUTORING</b><span data-en="Local in-person tutoring delivering identical curriculum quality and high parent satisfaction." data-ur="مقامی گھریلو ٹیوشن، یکساں نصابی معیار اور والدین کی اعلیٰ اطمینان کے ساتھ۔">Local in-person tutoring delivering identical curriculum quality and high parent satisfaction.</span></div></div>
+            </div>
+
+            <div class="quick-actions">
+              <button class="btn btn-primary" onclick="navigateTo('subjects')"><span data-en="Explore Subjects" data-ur="مضامین دیکھیں">Explore Subjects</span> <i class="fa-solid fa-arrow-right"></i></button>
+              <button class="btn btn-amber" onclick="navigateTo('admissions')"><i class="fa-solid fa-pen-to-square"></i> <span data-en="Enroll Now" data-ur="ابھی داخلہ لیں">Enroll Now</span></button>
+              <button class="btn btn-outline" onclick="openModal('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Student Login" data-ur="طالب علم لاگ ان">Student Login</span></button>
+            </div>
+          </div>
+
+          <div class="tutor-card">
+            <div class="tutor-avatar">SA</div>
+            <h3 data-en="Sir Seraj Ahmad" data-ur="سر سراج احمد">Sir Seraj Ahmad</h3>
+            <div class="role" data-en="Founder & Principal Instructor" data-ur="بانی اور پرنسپل انسٹرکٹر">Founder & Principal Instructor</div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span style="color:var(--text-muted);font-size:12px;" data-en="(Parent & Student Rated)" data-ur="(والدین اور طلباء کی درجہ بندی)">(Parent & Student Rated)</span>
+            </div>
+            <p data-en="Two-plus years of dedicated educational leadership specializing in Science, Computing, Languages and Religious Studies for Grade 9 & 10 students, with a track record of measurable academic transformation." data-ur="دو سال سے زائد عرصے کی علمی قیادت، گریڈ 9 اور 10 کے طلباء کے لیے سائنس، کمپیوٹنگ، زبانوں اور دینی علوم میں مہارت کے ساتھ، قابلِ پیمائش علمی تبدیلی کے ریکارڈ کے ساتھ۔">Two-plus years of dedicated educational leadership specializing in Science, Computing, Languages and Religious Studies for Grade 9 & 10 students, with a track record of measurable academic transformation.</p>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <i class="fa-solid fa-calendar-check"></i>
+            <div class="num">2+</div>
+            <div class="lbl" data-en="Years of Educational Excellence" data-ur="علمی عمدگی کے سال">Years of Educational Excellence</div>
+          </div>
+          <div class="stat-card">
+            <i class="fa-solid fa-trophy"></i>
+            <div class="num">100%</div>
+            <div class="lbl" data-en="Board Exam Success Rate" data-ur="بورڈ امتحان میں کامیابی کی شرح">Board Exam Success Rate</div>
+          </div>
+          <div class="stat-card">
+            <i class="fa-solid fa-thumbs-up"></i>
+            <div class="num" data-en="High" data-ur="اعلیٰ">High</div>
+            <div class="lbl" data-en="Parent & Student Satisfaction" data-ur="والدین اور طلباء کی اطمینان">Parent & Student Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-pad">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-en="WHY CHOOSE US" data-ur="ہمیں کیوں منتخب کریں">WHY CHOOSE US</span>
+          <h2 data-en="One Standard of Excellence, Two Flexible Delivery Modes" data-ur="عمدگی کا ایک معیار، تدریس کے دو لچکدار طریقے">One Standard of Excellence, Two Flexible Delivery Modes</h2>
+          <p data-en="Whether a student studies with us online from anywhere in Pakistan, or through in-person home tutoring, they receive identical academic rigor, structured curriculum, and personal devotion." data-ur="چاہے طالب علم پاکستان میں کہیں سے بھی آن لائن پڑھے یا گھر پر ٹیوشن لے، اسے یکساں تدریسی معیار، منظم نصاب اور ذاتی توجہ حاصل ہوتی ہے۔">Whether a student studies with us online from anywhere in Pakistan, or through in-person home tutoring, they receive identical academic rigor, structured curriculum, and personal devotion.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="philosophy-card"><div class="icon"><i class="fa-solid fa-diagram-project"></i></div></div>
+            <h4 style="margin-top:14px;font-weight:700;color:var(--navy);" data-en="Structured Curriculum" data-ur="منظم نصاب">Structured Curriculum</h4>
+            <p style="color:var(--text-muted);font-size:13.8px;margin-top:8px;" data-en="Board-aligned syllabus coverage with systematic monthly milestones for every student." data-ur="ہر طالب علم کے لیے بورڈ کے مطابق نصاب اور ماہانہ اہداف کی منظم تکمیل۔">Board-aligned syllabus coverage with systematic monthly milestones for every student.</p>
+          </div>
+          <div class="card">
+            <div class="philosophy-card"><div class="icon"><i class="fa-solid fa-user-graduate"></i></div></div>
+            <h4 style="margin-top:14px;font-weight:700;color:var(--navy);" data-en="One-on-One Devotion" data-ur="انفرادی توجہ">One-on-One Devotion</h4>
+            <p style="color:var(--text-muted);font-size:13.8px;margin-top:8px;" data-en="Personalized attention ensuring every concept is mastered before progressing forward." data-ur="ذاتی توجہ کو یقینی بنانا کہ ہر تصور کو سمجھے بغیر آگے نہ بڑھا جائے۔">Personalized attention ensuring every concept is mastered before progressing forward.</p>
+          </div>
+          <div class="card">
+            <div class="philosophy-card"><div class="icon"><i class="fa-solid fa-chart-line"></i></div></div>
+            <h4 style="margin-top:14px;font-weight:700;color:var(--navy);" data-en="Performance Tracking" data-ur="کارکردگی کا جائزہ">Performance Tracking</h4>
+            <p style="color:var(--text-muted);font-size:13.8px;margin-top:8px;" data-en="Monthly diagnostic reports shared transparently with parents and students." data-ur="ماہانہ کارکردگی رپورٹس والدین اور طلباء کے ساتھ شفاف طریقے سے شیئر کی جاتی ہیں۔">Monthly diagnostic reports shared transparently with parents and students.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT PAGE ============ -->
+  <section id="about" class="page-view">
+    <div class="about-hero">
+      <div class="container">
+        <h2 data-en="About Sir Seraj Ahmad" data-ur="سر سراج احمد کے بارے میں">About Sir Seraj Ahmad</h2>
+        <p data-en="Founder & Principal Instructor, Leap & Learn Academy — dedicated to cultivating academic discipline, conceptual clarity, and lifelong learning habits in every student." data-ur="بانی اور پرنسپل انسٹرکٹر، لیپ اینڈ لرن اکیڈمی — ہر طالب علم میں علمی نظم و ضبط، تصوراتی وضاحت اور تاحیات سیکھنے کی عادات پیدا کرنے کے لیے پرعزم۔">Founder & Principal Instructor, Leap & Learn Academy — dedicated to cultivating academic discipline, conceptual clarity, and lifelong learning habits in every student.</p>
+      </div>
+    </div>
+    <div class="container section-pad">
+      <div class="section-head">
+        <span class="section-tag" data-en="PEDAGOGICAL PHILOSOPHY" data-ur="تدریسی فلسفہ">PEDAGOGICAL PHILOSOPHY</span>
+        <h2 data-en="A Methodical Approach to Academic Mastery" data-ur="علمی مہارت کا طریقہ کار">A Methodical Approach to Academic Mastery</h2>
+        <p data-en="Every learning plan at L&L Academy is designed around the individual learner, not a generic syllabus timeline." data-ur="ایل اینڈ ایل اکیڈمی میں ہر تعلیمی منصوبہ عمومی نصابی ترتیب کے بجائے انفرادی طالب علم کے مطابق تیار کیا جاتا ہے۔">Every learning plan at L&L Academy is designed around the individual learner, not a generic syllabus timeline.</p>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <div class="icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h4 data-en="Customized Learning Plans" data-ur="موزوں تعلیمی منصوبے">Customized Learning Plans</h4>
+          <p data-en="Each student's academic plan is built upon an initial diagnostic assessment, identifying conceptual gaps and designing a tailored roadmap toward board examination readiness." data-ur="ہر طالب علم کا تعلیمی منصوبہ ابتدائی جائزے کی بنیاد پر تیار کیا جاتا ہے تاکہ کمزوریوں کی نشاندہی کرکے بورڈ امتحان کے لیے تیار کیا جا سکے۔">Each student's academic plan is built upon an initial diagnostic assessment, identifying conceptual gaps and designing a tailored roadmap toward board examination readiness.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h4 data-en="Individual Student Focus" data-ur="انفرادی طالب علم پر توجہ">Individual Student Focus</h4>
+          <p data-en="Small, focused sessions ensure that no student is left behind — every doubt is addressed and every concept is reinforced through guided practice." data-ur="چھوٹے اور مرکوز سیشنز اس بات کو یقینی بناتے ہیں کہ کوئی طالب علم پیچھے نہ رہے — ہر سوال کا جواب دیا جاتا ہے اور ہر تصور کو مشق کے ذریعے مضبوط کیا جاتا ہے۔">Small, focused sessions ensure that no student is left behind — every doubt is addressed and every concept is reinforced through guided practice.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="icon"><i class="fa-solid fa-chart-column"></i></div>
+          <h4 data-en="Monthly Diagnostic Assessments" data-ur="ماہانہ تشخیصی تجزیہ">Monthly Diagnostic Assessments</h4>
+          <p data-en="Structured monthly tests and performance reports keep students, and their parents, consistently informed of academic progress and areas requiring reinforcement." data-ur="منظم ماہانہ ٹیسٹ اور رپورٹس طلباء اور والدین کو علمی ترقی اور مزید توجہ کے حامل شعبوں سے مسلسل آگاہ رکھتی ہیں۔">Structured monthly tests and performance reports keep students, and their parents, consistently informed of academic progress and areas requiring reinforcement.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="icon"><i class="fa-solid fa-file-pen"></i></div>
+          <h4 data-en="Real-Time Board Exam Preparation" data-ur="حقیقی وقت میں بورڈ امتحان کی تیاری">Real-Time Board Exam Preparation</h4>
+          <p data-en="Drawing on direct experience with the Rawalpindi Board and general Pakistani secondary examination patterns, students undergo timed mock assessments replicating actual board conditions." data-ur="راولپنڈی بورڈ اور عمومی پاکستانی ثانوی امتحانی طرز سے براہِ راست تجربے کی بنیاد پر طلباء کو وقت کے پابند مشقی امتحانات دیے جاتے ہیں جو اصل بورڈ حالات سے مشابہ ہوتے ہیں۔">Drawing on direct experience with the Rawalpindi Board and general Pakistani secondary examination patterns, students undergo timed mock assessments replicating actual board conditions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUBJECTS PAGE ============ -->
+  <section id="subjects" class="page-view">
+    <div class="container section-pad">
+      <div class="section-head">
+        <span class="section-tag" data-en="CURRICULUM" data-ur="نصاب">CURRICULUM</span>
+        <h2 data-en="Subjects & Programming We Teach" data-ur="ہمارے مضامین اور پروگرامنگ">Subjects & Programming We Teach</h2>
+        <p data-en="A comprehensive, board-aligned curriculum spanning sciences, languages, religious studies, and computer programming." data-ur="سائنس، زبانوں، دینی علوم اور کمپیوٹر پروگرامنگ پر مشتمل ایک جامع اور بورڈ کے مطابق نصاب۔">A comprehensive, board-aligned curriculum spanning sciences, languages, religious studies, and computer programming.</p>
+      </div>
+      <div class="grid-4">
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-book"></i></div>
+          <h4 data-en="English" data-ur="انگریزی">English</h4>
+          <p data-en="Subject mastery & language proficiency skills." data-ur="مضمون کی مہارت اور زبان کی روانی۔">Subject mastery & language proficiency skills.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-code"></i></div>
+          <h4 data-en="Computer Science" data-ur="کمپیوٹر سائنس">Computer Science</h4>
+          <p data-en="Including C Language & Python Programming." data-ur="بشمول سی زبان اور پائتھون پروگرامنگ۔">Including C Language & Python Programming.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-atom"></i></div>
+          <h4 data-en="Physics" data-ur="طبیعیات">Physics</h4>
+          <p data-en="Conceptual clarity with numerical problem-solving." data-ur="عددی مسائل کے حل کے ساتھ تصوراتی وضاحت۔">Conceptual clarity with numerical problem-solving.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-calculator"></i></div>
+          <h4 data-en="Mathematics" data-ur="ریاضی">Mathematics</h4>
+          <p data-en="Step-by-step mastery of core mathematical concepts." data-ur="بنیادی ریاضیاتی تصورات کی قدم بہ قدم مہارت۔">Step-by-step mastery of core mathematical concepts.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-mosque"></i></div>
+          <h4 data-en="Islamiat" data-ur="اسلامیات">Islamiat</h4>
+          <p data-en="Comprehensive religious & moral education." data-ur="جامع دینی اور اخلاقی تعلیم۔">Comprehensive religious & moral education.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-language"></i></div>
+          <h4 data-en="Urdu" data-ur="اردو">Urdu</h4>
+          <p data-en="Subject & language skills for fluent expression." data-ur="روانی کے ساتھ اظہار کے لیے مضمون اور زبان کی مہارتیں۔">Subject & language skills for fluent expression.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-book-quran"></i></div>
+          <h4 data-en="Tarjuma-tul-Quran Majeed" data-ur="ترجمہ القرآن مجید">Tarjuma-tul-Quran Majeed</h4>
+          <p data-en="Available in Urdu & English medium." data-ur="اردو اور انگریزی میڈیم میں دستیاب۔">Available in Urdu & English medium.</p>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fa-solid fa-palette"></i></div>
+          <h4 data-en="Fine Arts" data-ur="فائن آرٹس">Fine Arts</h4>
+          <p data-en="Creative skill-building and visual expression." data-ur="تخلیقی مہارت اور بصری اظہار کی تعمیر۔">Creative skill-building and visual expression.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STUDENTS PAGE ============ -->
+  <section id="students" class="page-view">
+    <div class="container section-pad">
+      <div class="section-head">
+        <span class="section-tag" data-en="OUR RECORD" data-ur="ہمارا ریکارڈ">OUR RECORD</span>
+        <h2 data-en="Enrolled Students & Alumni Status" data-ur="زیرِ تعلیم طلباء اور فارغ التحصیل کی حیثیت">Enrolled Students & Alumni Status</h2>
+        <p data-en="A transparent record of students mentored across our academic sessions." data-ur="ہمارے تعلیمی سیشنز میں رہنمائی حاصل کرنے والے طلباء کا شفاف ریکارڈ۔">A transparent record of students mentored across our academic sessions.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all" onclick="filterStudents('all',this)"><i class="fa-solid fa-list"></i> <span data-en="All Students" data-ur="تمام طلباء">All Students</span></button>
+        <button class="filter-btn" data-filter="active" onclick="filterStudents('active',this)"><i class="fa-solid fa-circle-check"></i> <span data-en="Active" data-ur="زیرِ تعلیم">Active</span></button>
+        <button class="filter-btn" data-filter="graduated" onclick="filterStudents('graduated',this)"><i class="fa-solid fa-graduation-cap"></i> <span data-en="Graduated" data-ur="فارغ التحصیل">Graduated</span></button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-en="Student Name" data-ur="طالب علم کا نام">Student Name</th>
+              <th data-en="Class / Grade" data-ur="جماعت">Class / Grade</th>
+              <th data-en="Academic Session" data-ur="تعلیمی سیشن">Academic Session</th>
+              <th data-en="Status" data-ur="حیثیت">Status</th>
+            </tr>
+          </thead>
+          <tbody id="studentsTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADMISSIONS PAGE ============ -->
+  <section id="admissions" class="page-view">
+    <div class="container section-pad">
+      <div class="section-head">
+        <span class="section-tag" data-en="JOIN US" data-ur="شامل ہوں">JOIN US</span>
+        <h2 data-en="Admissions & Contact — Enroll for Free" data-ur="داخلہ اور رابطہ — مفت اندراج کریں">Admissions & Contact — Enroll for Free</h2>
+        <p data-en="Fill out the form below and send it directly to us via WhatsApp. Our team will respond promptly to begin your academic journey." data-ur="نیچے دیا گیا فارم مکمل کریں اور براہِ راست واٹس ایپ کے ذریعے ہمیں بھیجیں۔ ہماری ٹیم جلد جواب دے گی۔">Fill out the form below and send it directly to us via WhatsApp. Our team will respond promptly to begin your academic journey.</p>
+      </div>
+
+      <div class="adm-grid">
+        <div class="form-card">
+          <form id="admissionForm">
+            <div class="form-group">
+              <label data-en="Guardian Name" data-ur="سرپرست کا نام">Guardian Name</label>
+              <input type="text" id="guardianName" required data-en="e.g. Muhammad Asif" data-ur="مثلاً محمد آصف" placeholder="e.g. Muhammad Asif">
+            </div>
+            <div class="form-group">
+              <label data-en="Student Name" data-ur="طالب علم کا نام">Student Name</label>
+              <input type="text" id="studentName" required data-en="Full name of the student" data-ur="طالب علم کا پورا نام" placeholder="Full name of the student">
+            </div>
+            <div class="form-group">
+              <label data-en="Contact / WhatsApp Number" data-ur="رابطہ / واٹس ایپ نمبر">Contact / WhatsApp Number</label>
+              <input type="tel" id="contactNumber" required data-en="03XXXXXXXXX" data-ur="03XXXXXXXXX" placeholder="03XXXXXXXXX">
+            </div>
+            <div class="form-group">
+              <label data-en="Subject Selection" data-ur="مضمون کا انتخاب">Subject Selection</label>
+              <select id="subjectSelect">
+                <option data-en="English" data-ur="انگریزی">English</option>
+                <option data-en="Computer Science (C / Python)" data-ur="کمپیوٹر سائنس (سی / پائتھون)">Computer Science (C / Python)</option>
+                <option data-en="Physics" data-ur="طبیعیات">Physics</option>
+                <option data-en="Mathematics" data-ur="ریاضی">Mathematics</option>
+                <option data-en="Islamiat" data-ur="اسلامیات">Islamiat</option>
+                <option data-en="Urdu" data-ur="اردو">Urdu</option>
+                <option data-en="Tarjuma-tul-Quran Majeed" data-ur="ترجمہ القرآن مجید">Tarjuma-tul-Quran Majeed</option>
+                <option data-en="Fine Arts" data-ur="فائن آرٹس">Fine Arts</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-en="Message (Urdu / English)" data-ur="پیغام (اردو / انگریزی)">Message (Urdu / English)</label>
+              <textarea id="messageBox" data-en="Write your query or preferred timing..." data-ur="اپنا سوال یا پسندیدہ وقت لکھیں..." placeholder="Write your query or preferred timing..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> <span data-en="Send Message via WhatsApp" data-ur="واٹس ایپ کے ذریعے پیغام بھیجیں">Send Message via WhatsApp</span></button>
+          </form>
+        </div>
+
+        <div>
+          <div class="contact-info-card">
+            <h3 data-en="Get in Touch" data-ur="رابطہ کریں">Get in Touch</h3>
+            <div class="contact-row"><div class="ic"><i class="fa-solid fa-phone"></i></div> <span>+92 3XX XXXXXXX</span></div>
+            <div class="contact-row"><div class="ic"><i class="fa-solid fa-envelope"></i></div> <span>your-email@example.com</span></div>
+            <div class="contact-row"><div class="ic"><i class="fa-solid fa-location-dot"></i></div> <span data-en="Rawalpindi, Punjab, Pakistan" data-ur="راولپنڈی، پنجاب، پاکستان">Rawalpindi, Punjab, Pakistan</span></div>
+          </div>
+          <div class="trust-box">
+            <h4 data-en="Why Families Trust L&L Academy" data-ur="خاندان ایل اینڈ ایل اکیڈمی پر کیوں بھروسہ کرتے ہیں">Why Families Trust L&L Academy</h4>
+            <ul>
+              <li><i class="fa-solid fa-circle-check"></i> <span data-en="100% Board Exam Success Rate" data-ur="100% بورڈ امتحان کی کامیابی کی شرح">100% Board Exam Success Rate</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span data-en="Transparent monthly progress reporting" data-ur="شفاف ماہانہ کارکردگی رپورٹنگ">Transparent monthly progress reporting</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span data-en="Flexible Online & Home Tutoring options" data-ur="لچکدار آن لائن اور گھریلو ٹیوشن کے اختیارات">Flexible Online & Home Tutoring options</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span data-en="Free initial consultation for all new families" data-ur="تمام نئے خاندانوں کے لیے مفت ابتدائی مشاورت">Free initial consultation for all new families</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong data-en="Leap & Learn Academy (L&L Academy)" data-ur="لیپ اینڈ لرن اکیڈمی (ایل اینڈ ایل اکیڈمی)">Leap & Learn Academy (L&L Academy)</strong></p>
+    <p data-en="2025 All Rights Reserved. Founded & Led by Sir Seraj Ahmad." data-ur="2025 جملہ حقوق محفوظ ہیں۔ بانی و سربراہ سر سراج احمد۔">2025 All Rights Reserved. Founded & Led by Sir Seraj Ahmad.</p>
+  </div>
+</footer>
+
+<!-- ============ COOKIE BANNER ============ -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">
+    <i class="fa-solid fa-cookie-bite"></i>
+    <p data-en="We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies." data-ur="ہم آپ کے تجربے کو بہتر بنانے کے لیے کوکیز استعمال کرتے ہیں۔ براؤزنگ جاری رکھ کر آپ کوکیز کے استعمال سے اتفاق کرتے ہیں۔">We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies.</p>
+  </div>
+  <button onclick="acceptCookies()"><i class="fa-solid fa-check"></i> <span data-en="Accept Cookies" data-ur="کوکیز قبول کریں">Accept Cookies</span></button>
+</div>
+
+<!-- ============ LOGIN / REGISTER MODAL ============ -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-icon"><i class="fa-solid fa-user-graduate"></i></div>
+    <h2 data-en="Welcome to L&L Academy" data-ur="ایل اینڈ ایل اکیڈمی میں خوش آمدید">Welcome to L&L Academy</h2>
+    <p data-en="Access your student portal or create a new account" data-ur="اپنے طالب علم پورٹل تک رسائی حاصل کریں یا نیا اکاؤنٹ بنائیں">Access your student portal or create a new account</p>
+    <div class="tabs">
+      <button class="tab-btn active" id="tabLoginBtn" onclick="switchTab('login')"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Student Login" data-ur="طالب علم لاگ ان">Student Login</span></button>
+      <button class="tab-btn" id="tabRegisterBtn" onclick="switchTab('register')"><i class="fa-solid fa-user-plus"></i> <span data-en="New Registration" data-ur="نیا اندراج">New Registration</span></button>
+    </div>
+
+    <form class="auth-form active" id="loginForm" onsubmit="demoSubmit(event,'login')">
+      <div class="form-group">
+        <label data-en="Username" data-ur="یوزر نیم">Username</label>
+        <input type="text" required data-en="Enter your username" data-ur="اپنا یوزر نیم درج کریں" placeholder="Enter your username">
+      </div>
+      <div class="form-group">
+        <label data-en="Password" data-ur="پاس ورڈ">Password</label>
+        <input type="password" required data-en="Enter your password" data-ur="اپنا پاس ورڈ درج کریں" placeholder="Enter your password">
+      </div>
+      <button type="submit" class="btn btn-submit"><i class="fa-solid fa-right-to-bracket"></i> <span data-en="Login to Portal" data-ur="پورٹل میں لاگ ان کریں">Login to Portal</span></button>
+    </form>
+
+    <form class="auth-form" id="registerForm" onsubmit="demoSubmit(event,'register')">
+      <div class="form-group">
+        <label data-en="Full Name" data-ur="پورا نام">Full Name</label>
+        <input type="text" required data-en="Enter your full name" data-ur="اپنا پورا نام درج کریں" placeholder="Enter your full name">
+      </div>
+      <div class="form-group">
+        <label data-en="Email Address" data-ur="ای میل ایڈریس">Email Address</label>
+        <input type="email" required data-en="Enter your email" data-ur="اپنا ای میل درج کریں" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label data-en="Password" data-ur="پاس ورڈ">Password</label>
+        <input type="password" required data-en="Create a password" data-ur="پاس ورڈ بنائیں" placeholder="Create a password">
+      </div>
+      <div class="form-group">
+        <label data-en="Grade" data-ur="جماعت">Grade</label>
+        <select>
+          <option data-en="Grade 9" data-ur="نویں جماعت">Grade 9</option>
+          <option data-en="Grade 10" data-ur="دسویں جماعت">Grade 10</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-submit"><i class="fa-solid fa-user-plus"></i> <span data-en="Create Account" data-ur="اکاؤنٹ بنائیں">Create Account</span></button>
+    </form>
+  </div>
+</div>
+
+<script>
+  /* ================= CONFIG ================= */
+  const WHATSAPP_NUMBER = "923XXXXXXXXX";
+
+  /* ================= NAVIGATION ================= */
+  function navigateTo(pageId){
+    document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('active'));
+    const target = document.getElementById(pageId);
+    if(target) target.classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l=>{
+      l.classList.toggle('current', l.getAttribute('data-page') === pageId);
+    });
+    window.scrollTo({top:0, behavior:'smooth'});
+    closeDrawer();
+  }
+
+  /* ================= DRAWER ================= */
+  function openDrawer(){
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('drawerOverlay').classList.add('open');
+  }
+  function closeDrawer(){
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+  }
+
+  /* ================= MODAL ================= */
+  function openModal(tab){
+    document.getElementById('authModal').classList.add('open');
+    switchTab(tab || 'login');
+    closeDrawer();
+  }
+  function closeModal(){
+    document.getElementById('authModal').classList.remove('open');
+  }
+  function switchTab(tab){
+    const isLogin = tab === 'login';
+    document.getElementById('tabLoginBtn').classList.toggle('active', isLogin);
+    document.getElementById('tabRegisterBtn').classList.toggle('active', !isLogin);
+    document.getElementById('loginForm').classList.toggle('active', isLogin);
+    document.getElementById('registerForm').classList.toggle('active', !isLogin);
+  }
+  function demoSubmit(e, type){
+    e.preventDefault();
+    const lang = document.documentElement.getAttribute('lang');
+    const msg = type === 'login'
+      ? (lang==='ur' ? "یہ ایک ڈیمو لاگ ان ہے۔ بیک اینڈ بعد میں شامل کیا جائے گا۔" : "This is a demo login. Backend integration coming soon.")
+      : (lang==='ur' ? "رجسٹریشن ڈیمو کامیاب۔ جلد ہی فعال ہو جائے گا۔" : "Demo registration successful. Full functionality coming soon.");
+    alert(msg);
+    closeModal();
+  }
+  document.getElementById('authModal').addEventListener('click', function(e){
+    if(e.target === this) closeModal();
+  });
+
+  /* ================= COOKIES ================= */
+  function acceptCookies(){
+    localStorage.setItem('llacademy_cookies_accepted', 'true');
+    document.getElementById('cookieBanner').classList.remove('show');
+  }
+  window.addEventListener('load', ()=>{
+    if(localStorage.getItem('llacademy_cookies_accepted') !== 'true'){
+      setTimeout(()=> document.getElementById('cookieBanner').classList.add('show'), 800);
+    }
+  });
+
+  /* ================= LANGUAGE SWITCH ================= */
+  let currentLang = 'en';
+  function toggleLanguage(){
+    currentLang = currentLang === 'en' ? 'ur' : 'en';
+    applyLanguage(currentLang);
+  }
+  function applyLanguage(lang){
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ur' ? 'rtl' : 'ltr');
+    document.body.classList.toggle('rtl', lang === 'ur');
+
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const val = lang === 'ur' ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      if(val === null) return;
+      const tag = el.tagName;
+      if(tag === 'INPUT' || tag === 'TEXTAREA'){
+        el.setAttribute('placeholder', val);
+      } else {
+        el.innerHTML = val;
+      }
+    });
+
+    document.getElementById('langBtnText').textContent = lang === 'ur' ? 'English / EN' : 'اردو / UR';
+    renderStudents(document.querySelector('.filter-btn.active').getAttribute('data-filter'));
+  }
+
+  /* ================= STUDENTS TABLE ================= */
+  const students = [
+    {name:"Student 1", grade:"Grade 10", session:"2024–2025", status:"graduated"},
+    {name:"Student 2", grade:"Grade 10", session:"2024–2025", status:"graduated"},
+    {name:"Student 3", grade:"Grade 9",  session:"2024–2025", status:"graduated"},
+    {name:"Student 4", grade:"Grade 9",  session:"2024–2025", status:"graduated"},
+    {name:"Student 5", grade:"Grade 10", session:"2024–2025", status:"graduated"},
+    {name:"Ata",       grade:"Grade 10", session:"2025–Present", status:"active"},
+    {name:"Student 7", grade:"Grade 10", session:"2025–Present", status:"active"},
+    {name:"Student 8", grade:"Grade 9",  session:"2025–Present", status:"active"},
+    {name:"Student 9", grade:"Grade 9",  session:"2025–Present", status:"active"},
+    {name:"Student 10",grade:"Grade 9",  session:"2025–Present", status:"active"},
+    {name:"Student 11",grade:"Grade 10", session:"2025–Present", status:"active"},
+    {name:"Student 12",grade:"Grade 9",  session:"2025–Present", status:"active"},
+  ];
+
+  function renderStudents(filter){
+    const tbody = document.getElementById('studentsTbody');
+    tbody.innerHTML = '';
+    const lang = document.documentElement.getAttribute('lang') || 'en';
+    students.forEach(s=>{
+      if(filter !== 'all' && s.status !== filter) return;
+      const statusLabel = s.status === 'active'
+        ? (lang==='ur' ? 'زیرِ تعلیم' : 'Active')
+        : (lang==='ur' ? 'فارغ التحصیل' : 'Graduated');
+      const statusIcon = s.status === 'active' ? 'fa-circle-check' : 'fa-graduation-cap';
+      const pillClass = s.status === 'active' ? 'pill-active' : 'pill-graduated';
+      const gradeLabel = s.grade === 'Grade 9'
+        ? (lang==='ur' ? 'نویں جماعت' : 'Grade 9')
+        : (lang==='ur' ? 'دسویں جماعت' : 'Grade 10');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${s.name}</td>
+        <td>${gradeLabel}</td>
+        <td>${s.session}</td>
+        <td><span class="pill ${pillClass}"><i class="fa-solid ${statusIcon}"></i>${statusLabel}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+  function filterStudents(filter, btn){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderStudents(filter);
+  }
+
+  /* ================= ADMISSION FORM -> WHATSAPP ================= */
+  document.getElementById('admissionForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const guardian = document.getElementById('guardianName').value.trim();
+    const student = document.getElementById('studentName').value.trim();
+    const contact = document.getElementById('contactNumber').value.trim();
+    const subject = document.getElementById('subjectSelect').value;
+    const message = document.getElementById('messageBox').value.trim();
+
+    if(!guardian || !student || !contact){
+      alert(document.documentElement.getAttribute('lang') === 'ur'
+        ? "براہ کرم تمام ضروری فیلڈز پُر کریں۔"
+        : "Please fill in all required fields.");
+      return;
+    }
+
+    const text =
+`Hello L&L Academy, I would like to enroll.
+
+Guardian Name: ${guardian}
+Student Name: ${student}
+Contact Number: ${contact}
+Subject: ${subject}
+Message: ${message || '-'}`;
+
+    const encoded = encodeURIComponent(text);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+  });
+
+  /* ================= INIT ================= */
+  renderStudents('all');
+</script>
+
+</body>
+</html>
+```
